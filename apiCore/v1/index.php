@@ -80,7 +80,7 @@ Flight::route('POST /postUsersIntegration/@apk/@xapk', function ($apk,$xapk) {
  
     curl_close($curl);
 
-echo $response2;
+echo $response1;
 
         
     } else {
