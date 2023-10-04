@@ -102,7 +102,7 @@ echo $response2;
 
 
 
-Flight::route('GET /getPublicUsers/@headerslink/', function ($headerslink) {
+Flight::route('GET /postClient1/@headerslink/', function ($headerslink) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -119,7 +119,7 @@ Flight::route('GET /getPublicUsers/@headerslink/', function ($headerslink) {
        
         $sub_domaincon=new model_dom();
         $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/koiosCore/apiAuth/v1/authApiKeyGatewayKoios/';
+        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGatewayKoios/';
       
         $data = array(
             'ApiKey' =>$apiKey, 
@@ -165,7 +165,7 @@ Flight::route('GET /getPublicUsers/@headerslink/', function ($headerslink) {
             $context = stream_context_create($options);
             
             // Realizar la solicitud y obtener la respuesta
-            $response = file_get_contents($sub_domain.'/koiosCore/apiUsers/v1/getPublicUsers/', false, $context);
+            $response = file_get_contents($sub_domain.'/kairosKore/apiCore/v1/getPublicUsers/', false, $context);
                  
            
         
@@ -196,7 +196,7 @@ Flight::route('GET /getPublicUsers/@headerslink/', function ($headerslink) {
 
 
 
-Flight::route('POST /postUsersIntegration/@apk/@xapk', function ($apk,$xapk) {
+Flight::route('POST /postClient/@apk/@xapk', function ($apk,$xapk) {
   
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -207,12 +207,16 @@ Flight::route('POST /postUsersIntegration/@apk/@xapk', function ($apk,$xapk) {
     if (!empty($apk) && !empty($xapk)) {
         $dta = array(
             
-            'name' => Flight::request()->data->name,
-            'lastName' => Flight::request()->data->lastName,
-            'personalMail' => Flight::request()->data->personalMail,
-            'contact' => Flight::request()->data->contact,
+            'clientName' => Flight::request()->data->clientName,
+            'comments' => Flight::request()->data->comments,
+            'clientType' => Flight::request()->data->clientType,
+            'ownerName' => Flight::request()->data->ownerName,
+            'ownerLastName' => Flight::request()->data->ownerLastName,
             'rolId' => Flight::request()->data->rolId,
+            'contact' => Flight::request()->data->contact,
+            'email' => Flight::request()->data->email,
             'keyWord' => Flight::request()->data->keyWord
+
         );
 
 
@@ -223,7 +227,7 @@ Flight::route('POST /postUsersIntegration/@apk/@xapk', function ($apk,$xapk) {
 
         $sub_domaincon=new model_dom();
         $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/koiosCore/apiAuth/v1/authApiKeyGatewayKoios/';
+        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
       
         $data = array(
           'ApiKey' =>$apk, 
@@ -246,7 +250,7 @@ Flight::route('POST /postUsersIntegration/@apk/@xapk', function ($apk,$xapk) {
       $dt=json_encode($dta);
 
       curl_close($curl);
-      $url = $sub_domain."/koiosCore/apiUsers/v1/postUsersIntegration/$apk/$xapk";
+      $url = $sub_domain."/kairosCore/apiCore/v1/postClient/$apk/$xapk";
 
       $curl = curl_init();
       
