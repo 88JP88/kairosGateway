@@ -58,7 +58,7 @@ Flight::route('POST /postUsersIntegration/@apk/@xapk', function ($apk,$xapk) {
       $dt=json_encode($dta);
 
       curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiUsers/v1/postUsersIntegration/$apk/$xapk";
+      $url = $sub_domain."/kairosCore/apiCore/v1/postUsersIntegration/$apk/$xapk";
 
       $curl = curl_init();
       
@@ -80,7 +80,7 @@ Flight::route('POST /postUsersIntegration/@apk/@xapk', function ($apk,$xapk) {
  
     curl_close($curl);
 
-echo $response1;
+echo $response2;
 
         
     } else {
