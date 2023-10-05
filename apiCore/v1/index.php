@@ -406,7 +406,7 @@ Flight::route('POST /validateLogIn/@headerslink', function ($headerslink) {
        
         $sub_domaincon=new model_dom();
         $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/koiosCore/apiAuth/v1/authApiKeyLog/';
+        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyLog/';
       
         $data = array(
           
@@ -429,7 +429,7 @@ Flight::route('POST /validateLogIn/@headerslink', function ($headerslink) {
 
 
       curl_close($curl);
-      $url = $sub_domain.'/koiosCore/apiUsers/v1/validateLogIn/'.$headerslink;
+      $url = $sub_domain.'/kairosCore/apiCore/v1/validateLogIn/'.$headerslink;
 
       $curl = curl_init();
       
