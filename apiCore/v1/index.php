@@ -107,7 +107,8 @@ Flight::route('POST /postInternalUsersIntegration/@apk/@xapk', function ($apk,$x
             'personalMail' => Flight::request()->data->personalMail,
             'contact' => Flight::request()->data->contact,
             'rolId' => Flight::request()->data->rolId,
-            'keyWord' => Flight::request()->data->keyWord
+            'keyWord' => Flight::request()->data->keyWord,
+            'clientId' => Flight::request()->data->clientId
         );
 
 
