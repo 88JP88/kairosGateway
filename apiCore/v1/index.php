@@ -24,7 +24,8 @@ Flight::route('POST /postUsersIntegration/@apk/@xapk', function ($apk,$xapk) {
             'personalMail' => Flight::request()->data->personalMail,
             'contact' => Flight::request()->data->contact,
             'rolId' => Flight::request()->data->rolId,
-            'keyWord' => Flight::request()->data->keyWord
+            'keyWord' => Flight::request()->data->keyWord,
+            'clientId' => Flight::request()->data->clientId
         );
 
 
@@ -191,7 +192,9 @@ Flight::route('POST /postUsersIntegrationAdmin/@apk/@xapk', function ($apk,$xapk
             'personalMail' => Flight::request()->data->personalMail,
             'contact' => Flight::request()->data->contact,
             'rolId' => Flight::request()->data->rolId,
-            'keyWord' => Flight::request()->data->keyWord
+            'keyWord' => Flight::request()->data->keyWord,
+            
+            'clientId' => Flight::request()->data->clientId
         );
 
 
