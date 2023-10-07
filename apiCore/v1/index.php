@@ -876,7 +876,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
             $context = stream_context_create($options);
             
             // Realizar la solicitud y obtener la respuesta
-            $response = file_get_contents($sub_domain.'/kairosCore/apiCore/v1/getProfileInfoLog/'.$userName.'/'.$sessionId, false, $context);
+            $response = file_get_contents($sub_domain.'/kairosCore/apiCore/v1/getProfileInfoLogInternal/'.$userName.'/'.$sessionId, false, $context);
                  
            
         
