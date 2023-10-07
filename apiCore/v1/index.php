@@ -724,7 +724,7 @@ echo $response2;
 
 
 
-Flight::route('POST /validateLogOut/@headerslink', function ($headerslink) {
+Flight::route('POST /validateLogOutInternal/@headerslink', function ($headerslink) {
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -740,7 +740,7 @@ Flight::route('POST /validateLogOut/@headerslink', function ($headerslink) {
         // Leer los datos de la solicitud
         $dta = [
             
-            'profileId' => Flight::request()->data->profileId,
+            'userId' => Flight::request()->data->userId,
             'sessionId' => Flight::request()->data->sessionId,
             'value'=>Flight::request()->data->value,
         ];
@@ -751,7 +751,7 @@ Flight::route('POST /validateLogOut/@headerslink', function ($headerslink) {
        
         $sub_domaincon=new model_dom();
         $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/koiosCore/apiAuth/v1/authApiKeyLog/';
+        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyLog/';
       
         $data = array(
           
@@ -774,7 +774,7 @@ Flight::route('POST /validateLogOut/@headerslink', function ($headerslink) {
 
 
       curl_close($curl);
-      $url = $sub_domain.'/koiosCore/apiUsers/v1/validateLogOut/'.$headerslink;
+      $url = $sub_domain.'/kairosCore/apiCore/v1/validateLogOutInternal/'.$headerslink;
 
       $curl = curl_init();
       
