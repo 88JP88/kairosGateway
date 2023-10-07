@@ -924,8 +924,8 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
       
         $data = array(
             
-            'xapiKey' => $headerslink2,
-            'ApiKey' => $headerslink
+            'xapiKey' => $headerslink,
+            'ApiKey' => $headerslink2
             
             );
       $curl = curl_init();
