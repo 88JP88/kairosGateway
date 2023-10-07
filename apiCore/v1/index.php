@@ -992,7 +992,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 });
 
 
-Flight::route('GET /getProfileInfo/@userName', function ($userName) {
+Flight::route('GET /getProfileInfoInternal/@userName', function ($userName) {
     
     header("Access-Control-Allow-Origin: *");
 
@@ -1012,7 +1012,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
         $ApiKey = $headers['Api-Key'];
         $sub_domaincon=new model_dom();
         $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/koiosCore/apiAuth/v1/authApiKeyGateway/';
+        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
       
         $data = array(
             
@@ -1059,7 +1059,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
             $context = stream_context_create($options);
             
             // Realizar la solicitud y obtener la respuesta
-            $response = file_get_contents($sub_domain.'/koiosCore/apiUsers/v1/getProfileInfo/'.$userName, false, $context);
+            $response = file_get_contents($sub_domain.'/koiosCore/apiUsers/v1/getProfileInfoInternal/'.$userName, false, $context);
                  
            
         
