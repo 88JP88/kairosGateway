@@ -920,7 +920,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
         
         $sub_domaincon=new model_dom();
         $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/koiosCore/apiAuth/v1/authApiKeyGateway/';
+        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
       
         $data = array(
             
