@@ -290,7 +290,7 @@ Flight::route('GET /getInternalUsers/@headerslink/', function ($headerslink) {
        
         $sub_domaincon=new model_dom();
         $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGatewayKoios/';
+        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGatewayKairos/';
       
         $data = array(
             'ApiKey' =>$apiKey, 
