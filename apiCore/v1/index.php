@@ -340,7 +340,7 @@ Flight::route('GET /getInternalUsers/@headerslink/', function ($headerslink) {
                  
            
         
-              echo $response1;
+              echo $response;
 
 
 
