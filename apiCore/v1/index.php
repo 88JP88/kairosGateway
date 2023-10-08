@@ -345,7 +345,7 @@ Flight::route('GET /getInternalUsers/@headerslink/', function ($headerslink) {
 
 
         } else {
-           echo 'Error: Autenticación fallida1';
+           echo 'Error: Autenticación fallida1'.$response1;
              //echo json_encode($response1);
            // echo $response1;
         }
