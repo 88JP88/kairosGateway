@@ -273,7 +273,7 @@ echo $response2;
 
 
 
-Flight::route('GET /getInternalUsers/@headerslink/', function ($headerslink) {
+Flight::route('GET /getInternalUsers/@headerslink/@filter', function ($headerslink,$filter) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -336,7 +336,7 @@ Flight::route('GET /getInternalUsers/@headerslink/', function ($headerslink) {
             $context = stream_context_create($options);
             
             // Realizar la solicitud y obtener la respuesta
-            $response = file_get_contents($sub_domain.'/kairosCore/apiCore/v1/getInternalUsers/', false, $context);
+            $response = file_get_contents($sub_domain.'/kairosCore/apiCore/v1/getInternalUsers/'.$filter, false, $context);
                  
            
         
