@@ -374,10 +374,8 @@ Flight::route('POST /putExtClient/@apk/@xapk', function ($apk,$xapk) {
     if (!empty($apk) && !empty($xapk)) {
         $dta = array(
             
-            'clientId' => Flight::request()->data->clientId,
-            'filter' => Flight::request()->data->filter,
-            'value' => Flight::request()->data->value
-
+            'clientId' => Flight::request()->data->clientId
+            
         );
 
 
