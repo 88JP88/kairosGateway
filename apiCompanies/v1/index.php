@@ -23,7 +23,8 @@ Flight::route('POST /postClientCalendar/@apk/@xapk', function ($apk,$xapk) {
             
             'clientId' => Flight::request()->data->clientId,
             'month' => Flight::request()->data->month,
-            'monthDays' => Flight::request()->data->monthDays
+            'monthDays' => Flight::request()->data->monthDays,
+            'dayWeek' => Flight::request()->data->dayWeek
 
         );
 
