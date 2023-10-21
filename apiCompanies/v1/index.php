@@ -183,7 +183,8 @@ Flight::route('POST /postAssignRoom/@apk/@xapk', function ($apk,$xapk) {
             'clientId' => Flight::request()->data->clientId,
             'roomId' => Flight::request()->data->roomId,
             'userId' => Flight::request()->data->userId,
-            'timeId' => Flight::request()->data->timeId
+            'timeId' => Flight::request()->data->timeId,
+            'param' => Flight::request()->data->param
 
         );
 
