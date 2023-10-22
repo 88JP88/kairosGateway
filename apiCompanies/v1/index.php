@@ -268,7 +268,8 @@ Flight::route('POST /postClientElement/@apk/@xapk', function ($apk,$xapk) {
             'caract' => Flight::request()->data->caract,
             'brand' => Flight::request()->data->brand,
             'type' => Flight::request()->data->type,
-            'img' => Flight::request()->data->img
+            'img' => Flight::request()->data->img,
+            'value' => Flight::request()->data->value
 
         );
 
