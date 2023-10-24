@@ -852,7 +852,7 @@ Flight::route('GET /getClientRooms/@headerslink/@filter/@timeid', function ($hea
 
 
 
-Flight::route('GET /getClientElements/@headerslink/@filter/@param/@rid', function ($headerslink,$filter,$param,$rid) {
+Flight::route('GET /getClientElements/@headerslink/@filter/@param/@rid/@ids/@ids1', function ($headerslink,$filter,$param,$rid,$ids,$ids1) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -915,7 +915,7 @@ Flight::route('GET /getClientElements/@headerslink/@filter/@param/@rid', functio
             $context = stream_context_create($options);
             
             // Realizar la solicitud y obtener la respuesta
-            $response = file_get_contents($sub_domain.'/kairosCore/apiCompanies/v1/getClientElements/'.$filter.'/'.$param.'/'.$rid, false, $context);
+            $response = file_get_contents($sub_domain.'/kairosCore/apiCompanies/v1/getClientElements/'.$filter.'/'.$param.'/'.$rid.'/'.$ids.'/'.$ids1, false, $context);
                  
            
         
