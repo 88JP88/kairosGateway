@@ -737,7 +737,8 @@ Flight::route('POST /putExtClient/@apk/@xapk', function ($apk,$xapk) {
             
             'clientId' => Flight::request()->data->clientId,
             'filter' => Flight::request()->data->filter,
-            'value' => Flight::request()->data->value
+            'value' => Flight::request()->data->value,
+            'param' => Flight::request()->data->param
 
         );
 
