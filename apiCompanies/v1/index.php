@@ -1033,7 +1033,7 @@ Flight::route('GET /getCalendarDaysAssign/@headerslink/@filter/@param', function
 
 
 
-Flight::route('GET /getCalendarTime/@headerslink/@filter', function ($headerslink,$filter) {
+Flight::route('GET /getCalendarTime/@headerslink/@filter/@param', function ($headerslink,$filter,$param) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -1096,7 +1096,7 @@ Flight::route('GET /getCalendarTime/@headerslink/@filter', function ($headerslin
             $context = stream_context_create($options);
             
             // Realizar la solicitud y obtener la respuesta
-            $response = file_get_contents($sub_domain.'/kairosCore/apiCompanies/v1/getCalendarTime/'.$filter, false, $context);
+            $response = file_get_contents($sub_domain.'/kairosCore/apiCompanies/v1/getCalendarTime/'.$filter.'/'.$param, false, $context);
                  
            
         
