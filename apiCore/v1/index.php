@@ -330,7 +330,7 @@ Flight::route('GET /getInternalUsersClient/@headerslink/@filter/@cid', function 
             $context = stream_context_create($options);
             
             // Realizar la solicitud y obtener la respuesta
-            $response = file_get_contents($sub_domain.'/kairosCore/apiCore/v1/getInternalUsersClient/'.$filter.'/'.$cid, false, $context);
+          //  $response = file_get_contents($sub_domain.'/kairosCore/apiCore/v1/getInternalUsersClient/'.$filter.'/'.$cid, false, $context);
                  
            
         
