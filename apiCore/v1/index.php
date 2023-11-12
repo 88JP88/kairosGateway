@@ -1683,7 +1683,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
            // echo $response1;
         }
     } else {
-        echo 'Error: Encabezados faltantes';
+        echo 'Error: Encabezados faltantes 1';
     }
 
 
