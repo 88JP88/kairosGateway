@@ -1678,12 +1678,12 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 
         } else {
-           echo 'Error: Autenticación fallida';
+           echo 'Error: Autenticación fallida 1';
              //echo json_encode($response1);
            // echo $response1;
         }
     } else {
-        echo 'Error: Encabezados faltantes 1'. $headers['x-api-Key'];;
+        echo 'Error: Encabezados faltantes';
     }
 
 
