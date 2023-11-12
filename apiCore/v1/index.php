@@ -334,7 +334,7 @@ Flight::route('GET /getInternalUsersClient/@headerslink/@filter/@cid', function 
                  
            
         
-              echo $response;
+              echo $sub_domain.'/kairosCore/apiCore/v1/getInternalUsersClient/'.$filter.'/'.$cid;
 
 
 
