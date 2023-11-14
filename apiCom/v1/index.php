@@ -68,8 +68,8 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
       $dt=json_encode($dta);
 
       curl_close($curl);
-      $sub_domain=$sub_domaincon->domCom();
-      $url = $sub_domain."/kairosCom/apiCom/v1/postProduct/$apk/$xapk";
+      $sub_domain1=$sub_domaincon->domCom();
+      $url = $sub_domain1."/kairosCom/apiCom/v1/postProduct/$apk/$xapk";
 
       $curl = curl_init();
       
