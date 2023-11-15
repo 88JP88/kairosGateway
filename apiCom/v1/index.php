@@ -44,8 +44,8 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
         
 
         $sub_domaincon=new model_dom();
-        $sub_domain=$sub_domaincon->domCom();
-        $url = $sub_domain.'/kairosCom/apiAuth/v1/authApiKeyGateway/';
+        $sub_domain=$sub_domaincon->dom();
+        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
       
         $data = array(
           'ApiKey' =>$apk, 
