@@ -430,7 +430,7 @@ Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', f
                  
            
         
-              echo $response;
+              echo $response1;
 
 
 
@@ -440,7 +440,7 @@ Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', f
            // echo $response1;
         }
     } else {
-        echo 'Error: Encabezados faltantes1';
+        echo 'Error: Encabezados faltantes';
     }
 
 
