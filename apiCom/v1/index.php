@@ -414,7 +414,7 @@ Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', f
 
 
             $sub_domaincons = new model_dom;
-            $sub_domain = $sub_domaincons->dom();
+            $sub_domain = $sub_domaincons->domCom();
             
             // Configurar los headers
             $options = array(
