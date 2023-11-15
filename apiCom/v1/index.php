@@ -91,7 +91,7 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
  
     curl_close($curl);
 
-echo $response2;
+echo "hello";
 
         
     } else {
