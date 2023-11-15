@@ -426,11 +426,11 @@ Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', f
             $context = stream_context_create($options);
             
             // Realizar la solicitud y obtener la respuesta
-          //  $response = file_get_contents($sub_domain.'/kairosCom/apiCom/v1/getProducts/'.$clientId.'/'.$filter.'/'.$param.'/'.$value, false, $context);
+            $response = file_get_contents($sub_domain.'/kairosCom/apiCom/v1/getProducts/'.$clientId.'/'.$filter.'/'.$param.'/'.$value, false, $context);
                  
            
         
-              echo $response1. " ".$xApiKey;
+              echo $response;
 
 
 
