@@ -520,7 +520,7 @@ Flight::route('GET /getCatalogs/@headerslink/@clientId/@filter/@param/@value', f
                  
            
         
-              echo $response;
+              echo $response1." ".$xApiKey;
 
 
 
