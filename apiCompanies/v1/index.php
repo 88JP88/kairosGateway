@@ -2139,7 +2139,7 @@ Flight::route('POST /postFullCalendar/@apk/@xapk', function ($apk,$xapk) {
       $dt=json_encode($dta);
 
       curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiCompanies/v1/postClientRoom/$apk/$xapk";
+      $url = $sub_domain."/kairosCore/apiCompanies/v1/postFullCalendar/$apk/$xapk";
 
       $curl = curl_init();
       
