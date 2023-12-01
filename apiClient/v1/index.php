@@ -1097,7 +1097,7 @@ Flight::route('POST /postClientOrder/@apk/@xapk', function ($apk,$xapk) {
 
       curl_close($curl);
       $sub_domain1=$sub_domaincon->domCom();
-      $url = $sub_domain1."/kairosCom/apiCom/v1/postClientOrder/$apk/$xapk";
+      $url = $sub_domain1."/kairosCom/apiClient/v1/postClientOrder/$apk/$xapk";
 
       $curl = curl_init();
       
@@ -1119,7 +1119,7 @@ Flight::route('POST /postClientOrder/@apk/@xapk', function ($apk,$xapk) {
  
     curl_close($curl);
 
-echo "true|hola";
+echo $response2;
 
         
     } else {
