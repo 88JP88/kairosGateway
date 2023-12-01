@@ -1119,7 +1119,7 @@ Flight::route('POST /postClientOrder/@apk/@xapk', function ($apk,$xapk) {
  
     curl_close($curl);
 
-echo $response2;
+echo Flight::request()->data->cart;
 
         
     } else {
