@@ -1178,7 +1178,7 @@ Flight::route('POST /postCatalogBulk/@apk/@xapk', function ($apk,$xapk) {
 
       curl_close($curl);
       $sub_domain1=$sub_domaincon->domCom();
-      $url = $sub_domain1."/kairosCom/apiCom/v1/postCatalogBulk/$apk/$xapk";
+      $url = $sub_domain1."/kairosCom/apiClient/v1/postCatalogBulk/$apk/$xapk";
 
       $curl = curl_init();
       
