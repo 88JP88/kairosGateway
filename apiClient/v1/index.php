@@ -1200,7 +1200,7 @@ Flight::route('POST /postCatalogBulk/@apk/@xapk', function ($apk,$xapk) {
  
     curl_close($curl);
 
-echo "hi";
+echo $response2;
 
         
     } else {
