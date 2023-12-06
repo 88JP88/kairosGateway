@@ -1142,7 +1142,8 @@ Flight::route('POST /postCatalogBulk/@apk/@xapk', function ($apk,$xapk) {
     if (!empty($apk) && !empty($xapk)) {
         $dta = array(
             
-            'bulk' => Flight::request()->data->bulk
+            'bulk' => Flight::request()->data->bulk,
+            'clientId' => Flight::request()->data->clientId
 
         );
 
