@@ -1064,7 +1064,8 @@ Flight::route('POST /postClientOrder/@apk/@xapk', function ($apk,$xapk) {
             'fromBrowser' => Flight::request()->data->fromBrowser,
             'customerId' => Flight::request()->data->customerId,
             'paymentMethod' => Flight::request()->data->paymentMethod,
-            'paymentType' => Flight::request()->data->paymentType
+            'paymentType' => Flight::request()->data->paymentType,
+            'payWith' => Flight::request()->data->payWith
 
         );
 
