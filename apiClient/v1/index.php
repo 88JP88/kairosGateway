@@ -1998,7 +1998,7 @@ Flight::route('POST /putClientOrderPaymentStatus/@apk/@xapk', function ($apk,$xa
 
       curl_close($curl);
       $sub_domain1=$sub_domaincon->domCom();
-      $url = $sub_domain1."/kairosCom/apiCom/v1/putClientOrderPaymentStatus/$apk/$xapk";
+      $url = $sub_domain1."/kairosCom/apiClient/v1/putClientOrderPaymentStatus/$apk/$xapk";
 
       $curl = curl_init();
       
