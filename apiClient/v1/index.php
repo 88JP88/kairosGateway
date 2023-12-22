@@ -2294,7 +2294,7 @@ Flight::route('GET /getClientOrders/@headerslink/@clientId/@filter/@param/@value
 
 
 
-Flight::route('GET /getDelivey/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
+Flight::route('GET /getDelivery/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -2357,7 +2357,7 @@ Flight::route('GET /getDelivey/@headerslink/@clientId/@filter/@param/@value', fu
             $context = stream_context_create($options);
             
             // Realizar la solicitud y obtener la respuesta
-            $response = file_get_contents($sub_domain.'/kairosCom/apiClient/v1/getDelivey/'.$clientId.'/'.$filter.'/'.$param.'/'.$value, false, $context);
+            $response = file_get_contents($sub_domain.'/kairosCom/apiClient/v1/getDelivery/'.$clientId.'/'.$filter.'/'.$param.'/'.$value, false, $context);
                  
            
         
