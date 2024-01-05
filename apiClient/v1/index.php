@@ -799,7 +799,7 @@ $justFileName = basename($currentFile);
 $rutaCompleta = __DIR__;
 $status = http_response_code();
 $cid=Flight::request()->data->clientId;
-  kronos($response1,$response2,$response2, $info['Función'],$justFileName,$rutaCompleta,$cid,'{}',$url,$_SERVER['HTTP_REFERER'],$status);
+  kronos($response2,$response2,$response2, $info['Función'],$justFileName,$rutaCompleta,$cid,'{}',$url,$_SERVER['HTTP_REFERER'],$status);
 //final de log
 echo $response2;
 
@@ -807,15 +807,17 @@ echo $response2;
     } else {
         echo 'false|¡Error: Encabezados faltantes!';
           //inicio de log
-      require_once '';
+          require_once 'kronos/postLog.php';
       $backtrace = debug_backtrace();
       $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
       $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
   $justFileName = basename($currentFile);
   $rutaCompleta = __DIR__;
-  $status = http_response_code();
-      kronos($response1,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$clientId,$json_data,$url,$_SESSION['userId'],$_SERVER['HTTP_REFERER'],$status);
+  
+$status = http_response_code();
+  kronos($response2,$response2,$response2, $info['Función'],$justFileName,$rutaCompleta,$cid,'{}',$url,$_SERVER['HTTP_REFERER'],$status);
   //final de log
+  
     }
 });
 
