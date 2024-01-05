@@ -799,7 +799,7 @@ $justFileName = basename($currentFile);
 $rutaCompleta = __DIR__;
 $status = http_response_code();
 $cid=Flight::request()->data->clientId;
-  kronos($response1,$response2,$response2, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$_SERVER['HTTP_REFERER'],$status);
+  kronos($response1,$response2,$response2, $info['Función'],$justFileName,$rutaCompleta,$cid,'{}',$url,$_SERVER['HTTP_REFERER'],$status);
 //final de log
 echo $response2;
 
