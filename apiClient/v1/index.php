@@ -5,6 +5,7 @@ require 'flight/Flight.php';
 
 require 'database/db_users.php';
 require 'env/domain.php';
+require 'kronos/postLog.php';
 
  
 
@@ -789,12 +790,31 @@ Flight::route('POST /putProduct/@apk/@xapk', function ($apk,$xapk) {
 
  
     curl_close($curl);
-
+  //inicio de log
+ // require_once 'postLog.php';
+  $backtrace = debug_backtrace();
+  $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
+  $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
+$justFileName = basename($currentFile);
+$rutaCompleta = __DIR__;
+$status = http_response_code();
+  kronos($response1,$response2,$response2, $info['Función'],$justFileName,$rutaCompleta,Flight::request()->data->clientId,$dt,$url,$_SERVER['HTTP_REFERER'],$status);
+//final de log
 echo $response2;
 
         
     } else {
         echo 'false|¡Error: Encabezados faltantes!';
+          //inicio de log
+      require_once 'postLog.php';
+      $backtrace = debug_backtrace();
+      $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
+      $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
+  $justFileName = basename($currentFile);
+  $rutaCompleta = __DIR__;
+  $status = http_response_code();
+      kronos($response1,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$clientId,$json_data,$url,$_SESSION['userId'],$_SERVER['HTTP_REFERER'],$status);
+  //final de log
     }
 });
 
