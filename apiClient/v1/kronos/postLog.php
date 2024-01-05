@@ -53,7 +53,7 @@ $jsonData = '{
 
 
   
-  $url ="https://dev-kronos.lugma.tech/kronos/apiLogs/v1/frontLog/";
+  $url ="https://dev-kronos.lugma.tech/kronos/apiLogs/v1/middleLog/";
   
   // Definir los datos a enviar en la solicitud POST
   $data = array(
