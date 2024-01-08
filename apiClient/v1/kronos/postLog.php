@@ -33,7 +33,6 @@ $jsonData = '{
         "response":"'.$response.'",
         "error":"'.$error.'",
         "clientIp":"'.$_SERVER['REMOTE_ADDR'].'",
-        "clientBrowser":"'.$_SERVER['HTTP_USER_AGENT'].'",
         "clientLocation":"'.$details->country.' / '.$details->city.'"
       },
       "infoLog":{
@@ -42,7 +41,8 @@ $jsonData = '{
         "response":"'.$response.'",
         "message":"'.$message.'"
       }
-    },    "status":{
+    },"data":'.$data.',
+     "status":{
       "code":"'.$statusCode.'"
     }
   }';
@@ -57,6 +57,7 @@ $jsonData = '{
   $data6 = array(
       'data' => $jsonData,
       'logType' => 'gatewayApiClient'
+     
       
   );
   
@@ -69,7 +70,7 @@ $jsonData = '{
   // Configurar las opciones de la sesión cURL
   curl_setopt($curl, CURLOPT_URL, $url);
   curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $json_data);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $data6);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   
   // Ejecutar la solicitud y obtener la respuesta
@@ -77,7 +78,7 @@ $jsonData = '{
   
   // Cerrar la sesión cURL
   curl_close($curl);
-return $responselog;
+echo $responselog;
 
 }
 
