@@ -22,12 +22,9 @@ $jsonData = '{
         "level": "info",
         "clientId": "'.$clientId.'",
         "module": "'.$module.'",
-        "domain":"'.$_SERVER['HTTP_HOST'].'",
         "function":"'.$function.'",
         "file":"'.$filename.'",
         "error":"'.$error.'",
-        "clientIp":"'.$_SERVER['REMOTE_ADDR'].'",
-        "clientBrowser":"'.$_SERVER['HTTP_USER_AGENT'].'",
         "clientLocation":"'.$details->country.' / '.$details->city.'"
       },
       "infoLog":{
