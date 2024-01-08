@@ -1053,7 +1053,7 @@ $cid=Flight::request()->data->clientId;
 $array = explode("|", $response2);
 $response12=$array[0];
 $message=$array[1];
-kronos("midato");
+kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
 //final de log
 echo $response2;
 //echo "true|".kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
