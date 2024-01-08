@@ -1076,10 +1076,10 @@ $cid=Flight::request()->data->clientId;
 $array = explode("|", $response2);
 $response12=$array[0];
 $message=$array[1];
-//kronos($response2,$response2,$response2, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
 //final de log
-//echo $response2;
-echo  kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+echo $response2;
+//echo  kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
 
         
     } else {
