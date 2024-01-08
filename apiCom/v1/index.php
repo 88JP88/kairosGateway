@@ -91,6 +91,25 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
  
     curl_close($curl);
 
+
+    
+      //inicio de log
+      require_once 'kronos/postLog.php';
+ 
+      $backtrace = debug_backtrace();
+      $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
+      $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
+     $justFileName = basename($currentFile);
+     $rutaCompleta = __DIR__;
+     $status = http_response_code();
+     $cid=Flight::request()->data->clientId;
+     
+     //$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
+     $array = explode("|", $response2);
+     $response12=$array[0];
+     $message=$array[1];
+     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+     //final de log
 echo $response2;
 
         
@@ -190,6 +209,25 @@ Flight::route('POST /postCatalog/@apk/@xapk', function ($apk,$xapk) {
  
     curl_close($curl);
 
+
+      //inicio de log
+      require_once 'kronos/postLog.php';
+ 
+      $backtrace = debug_backtrace();
+      $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
+      $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
+     $justFileName = basename($currentFile);
+     $rutaCompleta = __DIR__;
+     $status = http_response_code();
+     $cid=Flight::request()->data->clientId;
+     
+     //$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
+     $array = explode("|", $response2);
+     $response12=$array[0];
+     $message=$array[1];
+     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+     //final de log
+
 echo $response2;
 
         
@@ -271,6 +309,25 @@ Flight::route('POST /postStore/@apk/@xapk', function ($apk,$xapk) {
 
  
     curl_close($curl);
+
+
+      //inicio de log
+      require_once 'kronos/postLog.php';
+ 
+      $backtrace = debug_backtrace();
+      $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
+      $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
+     $justFileName = basename($currentFile);
+     $rutaCompleta = __DIR__;
+     $status = http_response_code();
+     $cid=Flight::request()->data->clientId;
+     
+     //$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
+     $array = explode("|", $response2);
+     $response12=$array[0];
+     $message=$array[1];
+     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+     //final de log
 
 echo $response2;
 
@@ -354,6 +411,25 @@ Flight::route('POST /postCategorie/@apk/@xapk', function ($apk,$xapk) {
  
     curl_close($curl);
 
+
+      //inicio de log
+      require_once 'kronos/postLog.php';
+ 
+      $backtrace = debug_backtrace();
+      $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
+      $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
+     $justFileName = basename($currentFile);
+     $rutaCompleta = __DIR__;
+     $status = http_response_code();
+     $cid=Flight::request()->data->clientId;
+     
+     //$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
+     $array = explode("|", $response2);
+     $response12=$array[0];
+     $message=$array[1];
+     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+     //final de log
+    
 echo $response2;
 
         
