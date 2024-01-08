@@ -48,20 +48,20 @@ $jsonData = '{
   }';
 
 
-
+  $json_data = json_encode($jsonData);
 
   
   $url ="https://dev-kronos.lugma.tech/kronos/apiLogs/v1/middleLog/";
   
   // Definir los datos a enviar en la solicitud POST
   $data6 = array(
-      'data' => $jsonData,
+      'data' => $json_data,
       'logType' => 'gatewayApiClient'
       
   );
   
   // Convertir los datos a formato JSON
-  $json_data = json_encode($data6);
+  
   
   // Inicializar la sesión cURL
   $curl = curl_init();
@@ -69,7 +69,7 @@ $jsonData = '{
   // Configurar las opciones de la sesión cURL
   curl_setopt($curl, CURLOPT_URL, $url);
   curl_setopt($curl, CURLOPT_POST, true);
-  curl_setopt($curl, CURLOPT_POSTFIELDS, $json_data);
+  curl_setopt($curl, CURLOPT_POSTFIELDS, $data6);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   
   // Ejecutar la solicitud y obtener la respuesta
