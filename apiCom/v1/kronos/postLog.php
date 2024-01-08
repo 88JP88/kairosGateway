@@ -50,11 +50,12 @@ $jsonData = '{
 
 
   
-  $url ="https://dev-kronos.lugma.tech/kronos/apiLogs/v1/prueba/";
+  $url ="https://dev-kronos.lugma.tech/kronos/apiLogs/v1/middleLog/";
   
   // Definir los datos a enviar en la solicitud POST
   $data6 = array(
-      'data' => $jsonData
+      'data' => $jsonData,
+      'logType' => 'gatewayApiCom'
      
       
   );
