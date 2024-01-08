@@ -26,7 +26,7 @@ $jsonData = '{
         "function":"'.$function.'",
         "file":"'.$filename.'",
         "error":"'.$error.'",
-        "clientBrowser":"'.$_SERVER['HTTP_USER_AGENT'].'",
+        "clientIp":"'.$_SERVER['REMOTE_ADDR'].'",
         "clientLocation":"'.$details->country.' / '.$details->city.'"
       },
       "infoLog":{
