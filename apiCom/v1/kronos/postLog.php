@@ -77,7 +77,7 @@ $jsonData = '{
   
   // Cerrar la sesión cURL
   curl_close($curl);
-echo "false|".$responselog;
+echo $responselog;
 
 }
 
