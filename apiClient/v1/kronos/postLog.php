@@ -55,7 +55,7 @@ $jsonData = '{
   
   // Definir los datos a enviar en la solicitud POST
   $data6 = array(
-      'data' => $json_data,
+      'data' => $jsonData,
       'logType' => 'gatewayApiClient'
       
   );
