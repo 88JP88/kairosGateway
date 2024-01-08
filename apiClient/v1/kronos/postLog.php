@@ -1,6 +1,6 @@
 <?php
 
-function kronos($response,$message,$error,$function,$filename,$module,$clientId,$data,$endpoint,$referer,$statusCode) {
+function kronos($response,$message,$error,$function,$filename,$module,$clientId,$data,$endpoint,$statusCode) {
 
   // Establecer la zona horaria a Bogotá
 date_default_timezone_set('America/Bogota');
@@ -44,8 +44,7 @@ $jsonData = '{
       }
     },"data":'.$data.',
     "status":{
-      "code":"'.$statusCode.'",
-      "referer":"'.$referer.'"
+      "code":"'.$statusCode.'"
     }
   }';
 
