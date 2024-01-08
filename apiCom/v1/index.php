@@ -1037,7 +1037,7 @@ Flight::route('POST /putStore/@apk/@xapk', function ($apk,$xapk) {
     curl_close($curl);
 
 
-/*
+
       //inicio de log
  require_once 'kronos/postLog.php';
  
@@ -1054,54 +1054,10 @@ $array = explode("|", $response2);
 $response12=$array[0];
 $message=$array[1];
 //kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-//final de log*/
-
+//final de log
 echo $response2;
 //echo "true|".kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
 
-$jsonData = '{
-    "log":{
-      "front":{
-       
-        "clientBrowser":"'.$_SERVER['HTTP_USER_AGENT'].'"
-      },
-      "infoLog":{
-        "endPoint":"'.$url.'",
-        
-        "response":"'.$response2.'",
-        "message":"'.$response2.'"
-      }
-    },    "status":{
-      "code":"'.$response2.'"
-    }
-  }';
-
-$url ="https://dev-kronos.lugma.tech/kronos/apiLogs/v1/middleLog/";
-  
-// Definir los datos a enviar en la solicitud POST
-$data6 = array(
-    'data' => $jsonData,
-    'logType' => 'gatewayApiCom'
-    
-);
-
-// Convertir los datos a formato JSON
-$json_data = json_encode($data6);
-
-// Inicializar la sesión cURL
-$curl = curl_init();
- 
-// Configurar las opciones de la sesión cURL
-curl_setopt($curl, CURLOPT_URL, $url);
-curl_setopt($curl, CURLOPT_POST, true);
-curl_setopt($curl, CURLOPT_POSTFIELDS, $json_data);
-curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-// Ejecutar la solicitud y obtener la respuesta
-$responselog = curl_exec($curl);
-
-// Cerrar la sesión cURL
-curl_close($curl);
         
     } else {
         echo 'false|¡Error: Encabezados faltantes!';
