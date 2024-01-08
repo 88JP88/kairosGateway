@@ -1,6 +1,6 @@
 <?php
 
-function kronos($message,$error,$function,$filename,$module,$clientId,$data,$endpoint,$statusCode) {
+function kronos($response,$message,$error,$function,$filename,$module,$clientId,$data,$endpoint,$statusCode) {
 
   // Establecer la zona horaria a Bogotá
 date_default_timezone_set('America/Bogota');
@@ -11,7 +11,12 @@ $now->setTimezone(new DateTimeZone('America/Bogota'));
 
 // Formatear la fecha y hora actual
 $currentDateTime = $now->format('Y-m-d H:i:s');
-
+if($response==="true"){
+    $level="info";
+}
+if($response==="error"){
+    $level="error";
+}
 $ip = $_SERVER['REMOTE_ADDR'];
 $details = json_decode(file_get_contents("http://ip-api.com/json/$ip"));
 
@@ -19,12 +24,13 @@ $jsonData = '{
     "log":{
       "front":{
         "timestamp": "'.$currentDateTime.'",
-        "level": "info",
+        "level": "'.$level.'",
         "clientId": "'.$clientId.'",
         "module": "'.$module.'",
         "domain":"'.$_SERVER['HTTP_HOST'].'",
         "function":"'.$function.'",
         "file":"'.$filename.'",
+        "response":"'.$response.'",
         "error":"'.$error.'",
         "clientIp":"'.$_SERVER['REMOTE_ADDR'].'",
         "clientLocation":"'.$details->country.' / '.$details->city.'"
@@ -32,6 +38,7 @@ $jsonData = '{
       "infoLog":{
         "endPoint":"'.$endpoint.'",
         
+        "response":"'.$response.'",
         "message":"'.$message.'"
       }
     },    "status":{
