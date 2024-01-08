@@ -42,8 +42,7 @@ $jsonData = '{
         "response":"'.$response.'",
         "message":"'.$message.'"
       }
-    },"data":'.json_encode($data).',
-    "status":{
+    },    "status":{
       "code":"'.$statusCode.'"
     }
   }';
