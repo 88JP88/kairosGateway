@@ -22,7 +22,6 @@ $jsonData = '{
         "level": "info",
         "clientId": "'.$clientId.'",
         "module": "'.$module.'",
-        "domain":"'.$_SERVER['HTTP_HOST'].'",
         "function":"'.$function.'",
         "file":"'.$filename.'",
         "error":"'.$error.'",
