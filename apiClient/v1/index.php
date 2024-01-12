@@ -1567,7 +1567,7 @@ Flight::route('POST /putDelivery/@apk/@xapk', function ($apk,$xapk) {
      $cid=Flight::request()->data->clientId;
      $trackId=Flight::request()->data->trackId;
      
-     $response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
+     $response1 = trim($response2); // Eliminar espacios en blanco alrededor de la respuesta
      $array = explode("|", $response1);
      $response12=$array[0];
      $message=$array[1];
