@@ -1570,7 +1570,7 @@ Flight::route('POST /putDelivery/@apk/@xapk', function ($apk,$xapk) {
      $response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
      $array = explode("|", $response1);
      $response12=$array[0];
-     $message=$array[1];
+     //$message=$array[1];
     //echo kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status,$trackId);
      //final de log
 
