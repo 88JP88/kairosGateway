@@ -1565,12 +1565,13 @@ Flight::route('POST /putDelivery/@apk/@xapk', function ($apk,$xapk) {
      $rutaCompleta = __DIR__;
      $status = http_response_code();
      $cid=Flight::request()->data->clientId;
+     $trackId=Flight::request()->data->trackId;
      
      //$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
      $array = explode("|", $response2);
      $response12=$array[0];
      $message=$array[1];
-     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status,$trackId);
      //final de log
 
 echo $response2;
