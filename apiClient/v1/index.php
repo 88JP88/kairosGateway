@@ -1491,6 +1491,7 @@ Flight::route('POST /putDelivery/@apk/@xapk', function ($apk,$xapk) {
         $dta = array(
             
             'clientId' => Flight::request()->data->clientId,
+            'trackId' => Flight::request()->data->trackId,
             'deliveryId' => Flight::request()->data->deliveryId,
             'param' => Flight::request()->data->param,
            'value' => Flight::request()->data->value
