@@ -92,7 +92,7 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
     curl_close($curl);
 
 
-    
+    /*
       //inicio de log
       require_once 'kronos/postLog.php';
  
@@ -109,7 +109,7 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
      $response12=$array[0];
      $message=$array[1];
      kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-     //final de log
+     //final de log*/
 echo $response2;
 
         
