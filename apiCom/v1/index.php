@@ -108,7 +108,7 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
      $array = explode("|", $response2);
      $response12=$array[0];
      $message=$array[1];
-     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status,'true');
      //final de log
 echo $response2;
 
