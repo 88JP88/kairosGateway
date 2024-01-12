@@ -1557,7 +1557,7 @@ Flight::route('POST /putDelivery/@apk/@xapk', function ($apk,$xapk) {
 
       //inicio de log
       require_once 'kronos/postLog.php';
- 
+      $urlreferer = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
       $backtrace = debug_backtrace();
       $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
       $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
@@ -1571,7 +1571,7 @@ Flight::route('POST /putDelivery/@apk/@xapk', function ($apk,$xapk) {
      $array = explode("|", $response1);
      $response12=$array[0];
      $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status,$trackId);
+    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status,$trackId,$urlreferer);
      //final de log
 
 echo $response2;
