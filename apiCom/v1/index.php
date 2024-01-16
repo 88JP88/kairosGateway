@@ -252,6 +252,7 @@ Flight::route('POST /postStore/@apk/@xapk', function ($apk,$xapk) {
         $dta = array(
             
             'clientId' => Flight::request()->data->clientId,
+            'trackId' => Flight::request()->data->trackId,
             'storeName' => Flight::request()->data->storeName,
             'comments' => Flight::request()->data->comments,
             'storeType' => Flight::request()->data->storeType
