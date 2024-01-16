@@ -291,7 +291,7 @@ Flight::route('POST /postStore/@apk/@xapk', function ($apk,$xapk) {
 
       curl_close($curl);
       $sub_domain1=$sub_domaincon->domCom();
-      $url = $sub_domain1."/kairosCom/apiCom/v1/postStore/$apk/$xapk";
+      $url = $sub_domain1."/kairosCom/apiClient/v1/postStore/$apk/$xapk";
 
       $curl = curl_init();
       
