@@ -366,6 +366,104 @@ Flight::route('GET /getCategories/@headerslink/@clientId/@filter/@param/@value',
 });
 
 
+Flight::route('POST /putProduct/@apk/@xapk', function ($apk,$xapk) {
+  
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+    
+   
+    // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
+    if (!empty($apk) && !empty($xapk)) {
+        $dta = array(
+            
+            'clientId' => Flight::request()->data->clientId,
+            'trackId' => Flight::request()->data->trackId,
+            'param' => Flight::request()->data->param,
+            'value' => Flight::request()->data->value,
+            'productId' => Flight::request()->data->productId
+
+        );
+
+
+
+        // Acceder a los encabezados
+    
+        
+
+        $sub_domaincon=new model_dom();
+        $sub_domain=$sub_domaincon->dom();
+        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
+      
+        $data = array(
+          'ApiKey' =>$apk, 
+          'xapiKey' => $xapk
+          
+          );
+      $curl = curl_init();
+      
+      // Configurar las opciones de la sesión cURL
+      curl_setopt($curl, CURLOPT_URL, $url);
+      curl_setopt($curl, CURLOPT_POST, true);
+      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+      // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+      
+      // Ejecutar la solicitud y obtener la respuesta
+      $response1 = curl_exec($curl);
+
+      
+      $dt=json_encode($dta);
+
+      curl_close($curl);
+      $sub_domain1=$sub_domaincon->domCom();
+      $url = $sub_domain1."/kairosCom/apiCom/v1/putProduct/$apk/$xapk";
+
+      $curl = curl_init();
+      
+      // Configurar las opciones de la sesión cURL
+      curl_setopt($curl, CURLOPT_URL, $url);
+      curl_setopt($curl, CURLOPT_POST, true);
+      curl_setopt($curl, CURLOPT_POSTFIELDS, $dt);
+      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+      $headers = array(
+        'Content-Type: application/json'
+    );
+    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+      
+      // Ejecutar la solicitud y obtener la respuesta
+      $response2 = curl_exec($curl);
+      
+
+ 
+    curl_close($curl);
+
+
+      //inicio de log
+      require_once 'kronos/postLog.php';
+ 
+      $backtrace = debug_backtrace();
+      $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
+      $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
+     $justFileName = basename($currentFile);
+     $rutaCompleta = __DIR__;
+     $status = http_response_code();
+     $cid=Flight::request()->data->clientId;
+     
+     //$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
+     $array = explode("|", $response2);
+     $response12=$array[0];
+     $message=$array[1];
+     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+     //final de log
+echo $response2;
+
+        
+    } else {
+        echo 'false|¡Error: Encabezados faltantes!';
+    }
+});
 
 
 Flight::route('POST /putCatalog/@apk/@xapk', function ($apk,$xapk) {
