@@ -685,6 +685,7 @@ Flight::route('POST /putStore/@apk/@xapk', function ($apk,$xapk) {
         $dta = array(
             
             'clientId' => Flight::request()->data->clientId,
+            'trackId' => Flight::request()->data->trackId,
             'param' => Flight::request()->data->param,
             'value' => Flight::request()->data->value,
             'storeId' => Flight::request()->data->storeId
@@ -759,11 +760,11 @@ $status = http_response_code();
 $cid=Flight::request()->data->clientId;
 
 //$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
-$array = explode("|", $response2);
-$response12=$array[0];
-$message=$array[1];
-kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-//final de log
+// $array = explode("|", $response2);
+// $response12=$array[0];
+// $message=$array[1];
+// kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+// //final de log
 echo $response2;
 //echo "true|".kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
 
