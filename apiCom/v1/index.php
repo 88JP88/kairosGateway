@@ -660,9 +660,9 @@ Flight::route('POST /putCategorie/@apk/@xapk', function ($apk,$xapk) {
      //$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
      $array = explode("|", $response2);
      $response12=$array[0];
-     $message=$array[1];
-     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-     //final de log
+    //  $message=$array[1];
+    //  kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+    //  //final de log
 echo $response2;
 
         
