@@ -192,7 +192,7 @@ Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', f
 
 
         } else {
-           echo 'Error: Autenticación fallida1'.$response1;
+           echo 'Error: Autenticación fallida';
              //echo json_encode($response1);
            // echo $response1;
         }
