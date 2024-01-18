@@ -583,6 +583,7 @@ Flight::route('POST /putCategorie/@apk/@xapk', function ($apk,$xapk) {
         $dta = array(
             
             'clientId' => Flight::request()->data->clientId,
+            'trackId' => Flight::request()->data->trackId,
             'param' => Flight::request()->data->param,
             'value' => Flight::request()->data->value,
             'categoryId' => Flight::request()->data->categoryId
