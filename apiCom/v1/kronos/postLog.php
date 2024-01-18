@@ -1,6 +1,6 @@
 <?php
 
-function kronos($response,$message,$error,$function,$filename,$module,$clientId,$data,$endpoint,$statusCode,$level,$trackId) {
+function kronos($response,$message,$error,$function,$filename,$module,$clientId,$data,$endpoint,$statusCode,$trackId,$referer) {
 
   // Establecer la zona horaria a Bogotá
 date_default_timezone_set('America/Bogota');
@@ -11,10 +11,10 @@ $now->setTimezone(new DateTimeZone('America/Bogota'));
 
 // Formatear la fecha y hora actual
 $currentDateTime = $now->format('Y-m-d H:i:s');
-if($level==="true"){
+if($response==="true"){
     $level="info";
 }
-if($level==="false"){
+if($response==="error"){
     $level="error";
 }
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -24,7 +24,7 @@ $jsonData = '{
     "log":{
       "front":{
         "timestamp": "'.$currentDateTime.'",
-        "trackId": "'.$trackId.'",
+        "trackId":"'.$trackId.'",
         "level": "'.$level.'",
         "clientId": "'.$clientId.'",
         "module": "'.$module.'",
@@ -44,7 +44,8 @@ $jsonData = '{
       }
     },"data":'.$data.',
      "status":{
-      "code":"'.$statusCode.'"
+      "code":"'.$statusCode.'",
+      "referer":"'.$referer.'"
     }
   }';
 
@@ -57,7 +58,7 @@ $jsonData = '{
   // Definir los datos a enviar en la solicitud POST
   $data6 = array(
       'data' => $jsonData,
-      'logType' => 'gatewayApiCom'
+      'logType' => 'gatewayApiClient'
      
       
   );
