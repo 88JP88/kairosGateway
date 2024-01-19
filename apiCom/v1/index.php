@@ -482,6 +482,7 @@ Flight::route('POST /putCatalog/@apk/@xapk', function ($apk,$xapk) {
         $dta = array(
             
             'clientId' => Flight::request()->data->clientId,
+            'trackId' => Flight::request()->data->trackId,
             'param' => Flight::request()->data->param,
             'value' => Flight::request()->data->value,
             'catalogId' => Flight::request()->data->catalogId
@@ -556,10 +557,10 @@ Flight::route('POST /putCatalog/@apk/@xapk', function ($apk,$xapk) {
      
      //$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
      $array = explode("|", $response2);
-     $response12=$array[0];
-     $message=$array[1];
-     kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-     //final de log
+    //  $response12=$array[0];
+    //  $message=$array[1];
+    //  kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+    //  //final de log
 
 echo $response2;
 
