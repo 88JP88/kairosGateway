@@ -1903,6 +1903,7 @@ Flight::route('POST /putClientOrderStatus/@apk/@xapk', function ($apk,$xapk) {
         $dta = array(
             
             'clientId' => Flight::request()->data->clientId,
+            'trackId'=> Flight::request()->data->trackId,
             'orderId' => Flight::request()->data->orderId,
             'param' => Flight::request()->data->param,
            'value' => Flight::request()->data->value
@@ -2494,6 +2495,7 @@ Flight::route('POST /validateEcmValCode/@apk/@xapk', function ($apk,$xapk) {
         $dta = array(
             
             'clientId' => Flight::request()->data->clientId,
+            'trackId' => Flight::request()->data->trackId,
             'customerMail' => Flight::request()->data->customerMail,
             'valCode' => Flight::request()->data->valCode
         );
