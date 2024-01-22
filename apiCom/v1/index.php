@@ -3,7 +3,7 @@
 
 require 'flight/Flight.php'; 
 require 'env/domain.php';
-require_once 'model/users/modelPost.php';
+require_once 'model/users/postModel.php';
 require_once 'model/modelSecurity/authModel.php';
 
 
@@ -39,14 +39,14 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
         );
 
 
-            authModel::modelAuth($apk,$xapk);//AUTH MODEL
+        echo    authModel::modelAuth($apk,$xapk);//AUTH MODEL
        //  Acceder a los encabezados
     
         
 
        
 
-     echo modelPost::postProduct($dta);
+    // echo modelPost::postProduct($dta);
     
 
         
