@@ -81,7 +81,7 @@ Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', f
              $response= modelGet::getProducts($response1,$xApiKey,$clientId,$filter,$param,$value);
            
         
-              echo $response1;
+              echo $response;
 
 
 
