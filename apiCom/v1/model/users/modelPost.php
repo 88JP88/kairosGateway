@@ -1,5 +1,5 @@
 <?php
-require '../apiCom/v1/env/domain.php';
+require 'env/domain.php';
 class modelPost{
 
 public static function postProduct($data){
