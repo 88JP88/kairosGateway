@@ -4,6 +4,7 @@
 require 'flight/Flight.php'; 
 require 'env/domain.php';
 require_once 'model/users/postModel.php';
+require_once 'model/users/getModel.php';
 require_once 'model/modelSecurity/authModel.php';
 require_once 'model/users/responses.php';
 
