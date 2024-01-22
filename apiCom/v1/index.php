@@ -3,7 +3,7 @@
 
 require 'env/domain.php';
 //require 'model/users/modelPost.php';
-require 'model/modelSecurity/authModel.php';
+//require 'model/modelSecurity/authModel.php';
 
 
 require 'database/db_users.php';

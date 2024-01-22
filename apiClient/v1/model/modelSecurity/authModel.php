@@ -25,7 +25,7 @@ class authModel{
       // Ejecutar la solicitud y obtener la respuesta
       $response1 = curl_exec($curl);
       curl_close($curl);
-      return $response1;
+     // return $response1;
 
     }
 }
