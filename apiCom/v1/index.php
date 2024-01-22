@@ -54,6 +54,7 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
     }
 });
 
+
 Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
     
     header("Access-Control-Allow-Origin: *");
@@ -126,7 +127,7 @@ Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', f
 
 
         } else {
-           echo 'Error: Autenticación fallida1'.$response1;
+           echo 'Error: Autenticación fallida';
              //echo json_encode($response1);
            // echo $response1;
         }
@@ -140,8 +141,6 @@ Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', f
 
 
 });
-
-
 
 
 Flight::route('GET /getCatalogs/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
