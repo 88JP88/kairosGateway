@@ -2,7 +2,7 @@
 <?php
 
 require 'env/domain.php';
-require 'model/users/modelPost.php';
+//require 'model/users/modelPost.php';
 require 'model/modelSecurity/authModel.php';
 
 
