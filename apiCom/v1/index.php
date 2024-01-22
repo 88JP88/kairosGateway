@@ -38,14 +38,14 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
         );
 
 
-            authModel::modelAuth($apk,$xapk);//AUTH MODEL
+          //  authModel::modelAuth($apk,$xapk);//AUTH MODEL
         // Acceder a los encabezados
     
         
 
        
 
-     echo modelPost::postProduct($dta);
+    // echo modelPost::postProduct($dta);
     
 
         
