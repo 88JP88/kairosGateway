@@ -1,5 +1,5 @@
 <?php
-require 'env/domain.php';
+require './apiClient/v1/env/domain.php';
 class modelPost{
 
 public static function postProduct1($data){
