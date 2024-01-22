@@ -29,7 +29,7 @@ public static function postProduct($data){
 
 
   curl_close($curl);
-  echo  $response2;
+  return $response2;
 
 }
 
