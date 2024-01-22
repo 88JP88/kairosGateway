@@ -6,6 +6,7 @@ require 'model/users/modelPost.php';
 require 'model/modelSecurity/authModel.php';
 
 
+require 'database/db_users.php';
 
 Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
   
