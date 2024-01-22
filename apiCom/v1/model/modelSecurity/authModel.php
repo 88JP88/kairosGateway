@@ -1,5 +1,5 @@
 <?php
-// require 'apiClient/v1/env/domain.php';
+ require './apiCom/v1/env/domain.php';
 class authModel{
 
 

@@ -1,5 +1,5 @@
 <?php
-// require 'env/domain.php';
+require 'env/domain.php';
 class modelPost{
 
 public static function postProduct($data){
@@ -29,7 +29,7 @@ public static function postProduct($data){
 
 
   curl_close($curl);
-  //return  $response2;
+  return  $response2;
 
 }
 
