@@ -2,7 +2,7 @@
 require 'env/domain.php';
 class modelPost{
 
-public static function postProduct($data){
+public static function postProduct1($data){
     $sub_domaincon=new model_dom();
     $sub_domain1=$sub_domaincon->domCom();
     $APK=$data['apk'];
