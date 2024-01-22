@@ -45,18 +45,20 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
         
 
        if($response=="true"){
-
-        echo modelPost::postProduct($dta);
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+        echo modelPost::postProduct($postData);
     
        }
-else{
-    $responseSQL="false";
-    $apiMessageSQL="¡Autenticación fallida!";
-    $apiStatusSQL="401";
-    $messageSQL="¡Autenticación fallida!";
-    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
 
-}
+        }
 
         
     } else {
