@@ -18,25 +18,7 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
    
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'clientId' => Flight::request()->data->clientId,
-            'trackId' => Flight::request()->data->trackId,
-            'productName' => Flight::request()->data->productName,
-            'description' => Flight::request()->data->description,
-            'ean1' => Flight::request()->data->ean1,
-            'ean2' => Flight::request()->data->ean2,
-            'sku' => Flight::request()->data->sku,
-
-            'productType' => Flight::request()->data->productType,
-            'inPrice' => Flight::request()->data->inPrice,
-            'providerId' => Flight::request()->data->providerId,
-            'imgUrl' => Flight::request()->data->imgUrl,
-            'techSpef' => Flight::request()->data->techSpef,
-            'apk' => $apk,
-            'xapk' => $xapk
-
-        );
+       
 
 
         $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
