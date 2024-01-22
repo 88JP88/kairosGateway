@@ -13,51 +13,7 @@ require 'database/db_users.php';
 
 
 
-Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
-  
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    
-   
-    // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
-    if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'clientId' => Flight::request()->data->clientId,
-            'trackId' => Flight::request()->data->trackId,
-            'productName' => Flight::request()->data->productName,
-            'description' => Flight::request()->data->description,
-            'ean1' => Flight::request()->data->ean1,
-            'ean2' => Flight::request()->data->ean2,
-            'sku' => Flight::request()->data->sku,
 
-            'productType' => Flight::request()->data->productType,
-            'inPrice' => Flight::request()->data->inPrice,
-            'providerId' => Flight::request()->data->providerId,
-            'imgUrl' => Flight::request()->data->imgUrl,
-            'techSpef' => Flight::request()->data->techSpef,
-            'apk' => $apk,
-            'xapk' => $xapk
-
-        );
-
-
-          //  authModel::modelAuth($apk,$xapk);//AUTH MODEL
-        // Acceder a los encabezados
-    
-        
-
-       
-
-    // echo modelPost::postProduct($dta);
-    
-
-        
-    } else {
-        echo 'false|¡Error: Encabezados faltantes!';
-    }
-});
 
 Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
     
@@ -122,7 +78,7 @@ Flight::route('GET /getProducts/@headerslink/@clientId/@filter/@param/@value', f
             $context = stream_context_create($options);
             
             // Realizar la solicitud y obtener la respuesta
-            $response = file_get_contents($sub_domain.'/kairosCom/apiClient/v1/getProducts/'.$clientId.'/'.$filter.'/'.$param.'/'.$value, false, $context);
+            $response = file_get_contents($sub_domain.'/kairosCom/apiCom/v1/getProducts/'.$clientId.'/'.$filter.'/'.$param.'/'.$value, false, $context);
                  
            
         
