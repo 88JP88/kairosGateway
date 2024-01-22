@@ -5,7 +5,7 @@ require 'flight/Flight.php';
 require 'env/domain.php';
 require_once 'model/users/postModel.php';
 require_once 'model/modelSecurity/authModel.php';
-
+require_once 'model/users/responses.php';
 
 
 
@@ -39,19 +39,34 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
         );
 
 
-        echo    authModel::modelAuth($apk,$xapk);//AUTH MODEL
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
        //  Acceder a los encabezados
     
         
 
-       
+       if($response=="true"){
 
-    // echo modelPost::postProduct($dta);
+        echo modelPost::postProduct($dta);
     
+       }
+else{
+    $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="401";
+    $messageSQL="¡Autenticación fallida!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
+}
 
         
     } else {
         echo 'false|¡Error: Encabezados faltantes!';
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
     }
 });
 
