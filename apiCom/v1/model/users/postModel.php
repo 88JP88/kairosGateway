@@ -65,7 +65,7 @@ class modelPut{
   
   
     curl_close($curl);
-    return $response2;
+    echo $response2;
   
   }
   public static function putCatalog($data){
