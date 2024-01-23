@@ -29,7 +29,7 @@ public static function postOrderPOS($data){
 
 
   curl_close($curl);
-  //echo  $response2;
+  echo  $response2;
 
 }
 
@@ -61,7 +61,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
 
 curl_close($curl);
-//echo  $response2;
+echo  $response2;
 
 }
 
@@ -93,7 +93,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
 
 curl_close($curl);
-//echo  $response2;
+echo  $response2;
 
 }
 
@@ -124,7 +124,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
 
 curl_close($curl);
-//echo  $response2;
+echo  $response2;
 
 
 }
@@ -157,7 +157,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
 
 curl_close($curl);
-//echo  $response2;
+echo  $response2;
 
 
 }
@@ -190,7 +190,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
 
 curl_close($curl);
-//echo  $response2;
+echo  $response2;
 
 
 }
@@ -226,7 +226,7 @@ class modelPut{
   
   
   curl_close($curl);
-  //echo  $response2;
+  echo  $response2;
   
   
   }
@@ -259,7 +259,7 @@ class modelPut{
   
   
   curl_close($curl);
-  //echo  $response2;
+  echo  $response2;
   
   
   }
@@ -291,7 +291,7 @@ class modelPut{
   
   
   curl_close($curl);
-  //echo  $response2;
+  echo  $response2;
   
   
   }
@@ -323,7 +323,7 @@ class modelPut{
   
   
   curl_close($curl);
-  //echo  $response2;
+  echo  $response2;
   
   
   }
