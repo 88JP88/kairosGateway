@@ -210,11 +210,15 @@ $postData['apiValues'] = [
 
 
 
-Flight::route('GET /getCustomers/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
+Flight::route('GET /getCustomers/@headerslink/@apiData/', function ($headerslink,$apiData) {
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
     
+
+    $decodedData = urldecode($apiData);
+    $postData = json_decode($decodedData, true);
+
     $parts = explode(" ", $headerslink);
 
     $apiKey=$parts[0];
@@ -231,7 +235,7 @@ Flight::route('GET /getCustomers/@headerslink/@clientId/@filter/@param/@value', 
 
         if ($response1 != 'false' ) {
 
-            $postData=[];
+            
             $postData['apk'] = $response1;
             $postData['xapk'] = $xApiKey;
             $postData['apiValues'] = [
@@ -240,12 +244,7 @@ Flight::route('GET /getCustomers/@headerslink/@clientId/@filter/@param/@value', 
                 "apiVersion"=>"v1",
                 "endPoint"=>"getCustomers"
             ];
-            $postData['apiData'] = [
-                "clientId"=>$clientId,
-                "filter"=>$filter,
-                "param"=>$param,
-                "value"=>$value
-            ];
+           
             
                     echo modelGet::getModel($postData);
             // echo modelGet::getCustomers($response1,$xApiKey,$clientId,$filter,$param,$value);
