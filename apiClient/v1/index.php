@@ -27,8 +27,13 @@ Flight::route('POST /postClientOrder/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-
-        echo modelPost::postOrderPOS($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiClient",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postClientOrder"
+];
+        echo modelPost::postModel($postData);  
     
        }
         else{
@@ -73,7 +78,13 @@ Flight::route('POST /postClientOrderEcm/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPost::postOrderECM($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiClient",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postClientOrderEcm"
+];
+        echo modelPost::postModel($postData);  
     
        }
         else{
@@ -219,8 +230,25 @@ Flight::route('GET /getCustomers/@headerslink/@clientId/@filter/@param/@value', 
 
 
         if ($response1 != 'false' ) {
-           
-             echo modelGet::getCustomers($response1,$xApiKey,$clientId,$filter,$param,$value);
+
+            $postData=[];
+            $postData['apk'] = $response1;
+            $postData['xapk'] = $xApiKey;
+            $postData['apiValues'] = [
+                "serviceName"=>"kairosCom",
+                "apiName"=>"apiClient",
+                "apiVersion"=>"v1",
+                "endPoint"=>"getCustomers"
+            ];
+            $postData['apiData'] = [
+                "clientId"=>$clientId,
+                "filter"=>$filter,
+                "param"=>$param,
+                "value"=>$value
+            ];
+            
+                    echo modelGet::getModel($postData);
+            // echo modelGet::getCustomers($response1,$xApiKey,$clientId,$filter,$param,$value);
            
         } else {
             $responseSQL="false";
@@ -265,8 +293,13 @@ Flight::route('POST /putClientOrderPaymentStatus/@apk/@xapk', function ($apk,$xa
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPut::putOrderPaymentStatus($postData);
-    
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiClient",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putClientOrderPaymentStatus"
+];
+        echo modelPost::postModel($postData);    
        }
         else{
             $responseSQL="false";
@@ -309,8 +342,13 @@ Flight::route('POST /putClientOrderStatus/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPut::putOrderStatus($postData);
-    
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiClient",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putClientOrderStatus"
+];
+        echo modelPost::postModel($postData);     
        }
         else{
             $responseSQL="false";
@@ -354,7 +392,13 @@ Flight::route('POST /putCustomer/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPut::putCustomer($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiClient",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putCustomer"
+];
+        echo modelPost::postModel($postData);  
     
        }
         else{
@@ -399,8 +443,13 @@ Flight::route('POST /putDelivery/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPut::putDelivery($postData);
-    
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiClient",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putDelivery"
+];
+        echo modelPost::postModel($postData);  
        }
         else{
             $responseSQL="false";
@@ -544,7 +593,13 @@ Flight::route('POST /sendEcmValCode/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPost::sendValCodeECM($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiClient",
+    "apiVersion"=>"v1",
+    "endPoint"=>"sendEcmValCode"
+];
+        echo modelPost::postModel($postData);  
     
        }
         else{
@@ -588,7 +643,13 @@ Flight::route('POST /validateEcmValCode/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPost::validateCodeECM($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiClient",
+    "apiVersion"=>"v1",
+    "endPoint"=>"validateEcmValCode"
+];
+        echo modelPost::postModel($postData);  
     
        }
         else{
