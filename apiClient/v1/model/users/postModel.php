@@ -76,6 +76,7 @@ public static function postModel($data){
 
   $url = $sub_domain1."/$serviceName/$apiName/$apiVersion/$endPoint/$APK/$XAPK";
   //$url = $sub_domain1."/kairosCom/apiClient/v1/postCustomer/$APK/$XAPK";
+  unset($data['apiValues']);
   $curl = curl_init();
   $dt=json_encode($data);
 
@@ -96,6 +97,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
 
 curl_close($curl);
+
 echo  $response2;
 
 }
