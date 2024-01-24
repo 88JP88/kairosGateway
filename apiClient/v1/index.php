@@ -124,7 +124,7 @@ $postData['apiValues'] = [
     "apiVersion"=>"v1",
     "endPoint"=>"postCustomer"
 ];
-        echo modelPost::postCustomer($postData);
+        echo modelPost::postModel($postData);
     
        }
         else{
