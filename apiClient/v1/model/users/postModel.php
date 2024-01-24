@@ -71,8 +71,13 @@ public static function postCustomer($data){
   $sub_domain1=$sub_domaincon->domCom();
   $APK=$data['apk'];
   $XAPK=$data['xapk'];
-  $url = $sub_domain1."/kairosCom/apiClient/v1/postCustomer/$APK/$XAPK";
+  $serviceName=$data['apiValues']['serviceName'];
+  $apiName=$data['apiValues']['apiName'];
+  $apiVersion=$data['apiValues']['apiVersion'];
+  $endPoint=$data['apiValues']['endPoint'];
 
+  $url = $sub_domain1."/$serviceName/$apiName/$apiVersion/$endPoint/$APK/$XAPK";
+  //$url = $sub_domain1."/kairosCom/apiClient/v1/postCustomer/$APK/$XAPK";
   $curl = curl_init();
   $dt=json_encode($data);
 

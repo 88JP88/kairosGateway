@@ -27,6 +27,7 @@ Flight::route('POST /postClientOrder/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
+
         echo modelPost::postOrderPOS($postData);
     
        }
@@ -117,6 +118,12 @@ Flight::route('POST /postCustomer/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiClient",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postCustomer"
+];
         echo modelPost::postCustomer($postData);
     
        }
