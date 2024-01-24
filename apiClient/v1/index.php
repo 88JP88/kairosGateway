@@ -523,11 +523,15 @@ Flight::route('GET /getClientOrders/@headerslink/@clientId/@filter/@param/@value
 
 
 
-Flight::route('GET /getDelivery/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
+Flight::route('GET /getDelivery/@headerslink/@apiData/', function ($headerslink,$apiData) {
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
     
+    
+    $decodedData = urldecode($apiData);
+    $postData = json_decode($decodedData, true);
+
     $parts = explode(" ", $headerslink);
 
     $apiKey=$parts[0];
@@ -544,8 +548,17 @@ Flight::route('GET /getDelivery/@headerslink/@clientId/@filter/@param/@value', f
 
         if ($response1 != 'false' ) {
            
-             echo modelGet::getDelivery($response1,$xApiKey,$clientId,$filter,$param,$value);
+            $postData['apk'] = $response1;
+            $postData['xapk'] = $xApiKey;
+            $postData['apiValues'] = [
+                "serviceName"=>"kairosCom",
+                "apiName"=>"apiClient",
+                "apiVersion"=>"v1",
+                "endPoint"=>"getDelivery"
+            ];
            
+            
+                    echo modelGet::getModel($postData);           
         } else {
             $responseSQL="false";
             $apiMessageSQL="¡Autenticación fallida!";
