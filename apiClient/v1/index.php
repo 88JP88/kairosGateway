@@ -225,13 +225,9 @@ Flight::route('GET /getCustomers/@headerslink/@apiData/', function ($headerslink
     $xApiKey=$parts[1];
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apiKey) && !empty($xApiKey)) {
-        // Leer los datos de la solicitud
-       
+      
        $response1=authModel::modelAuthKairos($apiKey,$xApiKey);
        
-
-        // Realizar acciones basadas en los valores de los encabezados
-
 
         if ($response1 != 'false' ) {
 
@@ -245,7 +241,6 @@ Flight::route('GET /getCustomers/@headerslink/@apiData/', function ($headerslink
                 "endPoint"=>"getCustomers"
             ];
            
-            
                     echo modelGet::getModel($postData);
             // echo modelGet::getCustomers($response1,$xApiKey,$clientId,$filter,$param,$value);
            
@@ -528,7 +523,6 @@ Flight::route('GET /getDelivery/@headerslink/@apiData/', function ($headerslink,
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
     
-    
     $decodedData = urldecode($apiData);
     $postData = json_decode($decodedData, true);
 
@@ -557,8 +551,7 @@ Flight::route('GET /getDelivery/@headerslink/@apiData/', function ($headerslink,
                 "endPoint"=>"getDelivery"
             ];
            
-            
-                    echo modelGet::getModel($postData);           
+                    echo modelGet::getModel($postData);          
         } else {
             $responseSQL="false";
             $apiMessageSQL="¡Autenticación fallida!";
