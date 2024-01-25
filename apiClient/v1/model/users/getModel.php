@@ -34,12 +34,12 @@ class modelGet{
                 $appDataJson=json_encode($apiData);
                 $appData=urlencode($appDataJson);
                 // Realizar la solicitud y obtener la respuesta
-                $response = file_get_contents($sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$appData, false, $context);
+              //  $response = file_get_contents($sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$appData, false, $context);
                      
                
             
-                  
-      return $response;
+                  return $appDataJson;
+      //return $response;
       
       }
 
