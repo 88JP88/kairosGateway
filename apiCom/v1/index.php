@@ -261,12 +261,13 @@ Flight::route('GET /getProducts/@headerslink/@apiData', function ($headerslink,$
 });
 
 
-Flight::route('GET /getCatalogs/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
+Flight::route('GET /getCatalogs/@headerslink/@apiData', function ($headerslink,$apiData) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    
+    $decodedData = urldecode($apiData);
+    $postData = json_decode($decodedData, true);
     $parts = explode(" ", $headerslink);
 
     $apiKey=$parts[0];
@@ -283,8 +284,16 @@ Flight::route('GET /getCatalogs/@headerslink/@clientId/@filter/@param/@value', f
 
         if ($response1 != 'false' ) {
            
-             echo modelGet::getCatalogs($response1,$xApiKey,$clientId,$filter,$param,$value);
+            $postData['apk'] = $response1;
+            $postData['xapk'] = $xApiKey;
+            $postData['apiValues'] = [
+                "serviceName"=>"kairosCom",
+                "apiName"=>"apiCom",
+                "apiVersion"=>"v1",
+                "endPoint"=>"getCatalogs"
+            ];
            
+                    echo modelGet::getModel($postData);           
         } else {
             $responseSQL="false";
             $apiMessageSQL="¡Autenticación fallida!";
@@ -310,12 +319,13 @@ Flight::route('GET /getCatalogs/@headerslink/@clientId/@filter/@param/@value', f
 });
 
 
-Flight::route('GET /getStores/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
+Flight::route('GET /getStores/@headerslink/@apiData', function ($headerslink,$apiData) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    
+    $decodedData = urldecode($apiData);
+    $postData = json_decode($decodedData, true);
     $parts = explode(" ", $headerslink);
 
     $apiKey=$parts[0];
@@ -332,8 +342,16 @@ Flight::route('GET /getStores/@headerslink/@clientId/@filter/@param/@value', fun
 
         if ($response1 != 'false' ) {
            
-             echo modelGet::getStores($response1,$xApiKey,$clientId,$filter,$param,$value);
+            $postData['apk'] = $response1;
+            $postData['xapk'] = $xApiKey;
+            $postData['apiValues'] = [
+                "serviceName"=>"kairosCom",
+                "apiName"=>"apiCom",
+                "apiVersion"=>"v1",
+                "endPoint"=>"getStores"
+            ];
            
+                    echo modelGet::getModel($postData);           
         } else {
             $responseSQL="false";
             $apiMessageSQL="¡Autenticación fallida!";
@@ -359,12 +377,13 @@ Flight::route('GET /getStores/@headerslink/@clientId/@filter/@param/@value', fun
 
 
 
-Flight::route('GET /getCategories/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
+Flight::route('GET /getCategories/@headerslink/@apiData', function ($headerslink,$apiData) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    
+    $decodedData = urldecode($apiData);
+    $postData = json_decode($decodedData, true);
     $parts = explode(" ", $headerslink);
 
     $apiKey=$parts[0];
@@ -381,8 +400,16 @@ Flight::route('GET /getCategories/@headerslink/@clientId/@filter/@param/@value',
 
         if ($response1 != 'false' ) {
            
-             echo modelGet::getCategories($response1,$xApiKey,$clientId,$filter,$param,$value);
+            $postData['apk'] = $response1;
+            $postData['xapk'] = $xApiKey;
+            $postData['apiValues'] = [
+                "serviceName"=>"kairosCom",
+                "apiName"=>"apiCom",
+                "apiVersion"=>"v1",
+                "endPoint"=>"getCategories"
+            ];
            
+                    echo modelGet::getModel($postData);           
         } else {
             $responseSQL="false";
             $apiMessageSQL="¡Autenticación fallida!";
