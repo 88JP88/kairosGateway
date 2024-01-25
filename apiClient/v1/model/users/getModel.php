@@ -28,9 +28,9 @@ class modelGet{
                     )
                 );
                 $context = stream_context_create($options);
-                unset($data['apiValues']);
-                unset($data['apk']);
-                unset($data['xapk']);
+                unset($apiData['apiValues']);
+                unset($apiData['apk']);
+                unset($apiData['xapk']);
                 // Realizar la solicitud y obtener la respuesta
                 $response = file_get_contents($sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$apiData, false, $context);
                      
