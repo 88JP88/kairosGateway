@@ -501,8 +501,8 @@ Flight::route('GET /getClientOrders/@headerslink/@apiData', function ($headersli
                 "endPoint"=>"getClientOrders"
             ];
            
-                    echo modelGet::getModel($postData); 
-           
+                    //echo modelGet::getModel($postData); 
+           echo $apiData;
         } else {
             $responseSQL="false";
             $apiMessageSQL="¡Autenticación fallida!";
