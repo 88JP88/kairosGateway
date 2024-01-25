@@ -31,8 +31,9 @@ class modelGet{
                 unset($apiData['apiValues']);
                 unset($apiData['apk']);
                 unset($apiData['xapk']);
+                $appData=urlencode($apiData);
                 // Realizar la solicitud y obtener la respuesta
-                $response = file_get_contents($sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$apiData, false, $context);
+                $response = file_get_contents($sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$appData, false, $context);
                      
                
             
