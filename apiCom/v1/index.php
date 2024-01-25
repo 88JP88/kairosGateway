@@ -26,7 +26,13 @@ Flight::route('POST /postProduct/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPost::postProduct($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiCom",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postProduct"
+];
+        echo modelPost::postModel($postData);
     
        }
         else{
@@ -68,7 +74,13 @@ Flight::route('POST /postCatalog/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPost::postCatalog($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiCom",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postCatalog"
+];
+        echo modelPost::postModel($postData);
     
        }
         else{
@@ -111,7 +123,13 @@ Flight::route('POST /postStore/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPost::postStore($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiCom",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postStore"
+];
+        echo modelPost::postModel($postData);
     
        }
         else{
@@ -153,7 +171,13 @@ Flight::route('POST /postCategorie/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPost::postCategorie($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiCom",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postCategorie"
+];
+        echo modelPost::postModel($postData);
     
        }
         else{
@@ -392,7 +416,13 @@ Flight::route('POST /putProduct/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPut::putProduct($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiCom",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putProduct"
+];
+        echo modelPost::postModel($postData);
     
        }
         else{
@@ -433,7 +463,13 @@ Flight::route('POST /putCatalog/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPut::putCatalog($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiCom",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putCatalog"
+];
+        echo modelPost::postModel($postData);
     
        }
         else{
@@ -477,7 +513,13 @@ Flight::route('POST /putCategorie/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPut::putCategorie($postData);
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiCom",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putCategorie"
+];
+        echo modelPost::postModel($postData);
     
        }
         else{
@@ -521,8 +563,13 @@ Flight::route('POST /putStore/@apk/@xapk', function ($apk,$xapk) {
         $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
-        echo modelPut::putStore($postData);
-    
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCom",
+    "apiName"=>"apiCom",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putStore"
+];
+        echo modelPost::postModel($postData);
        }
         else{
             $responseSQL="false";

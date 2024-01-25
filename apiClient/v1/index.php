@@ -468,12 +468,13 @@ $postData['apiValues'] = [
 
 
 
-Flight::route('GET /getClientOrders/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
+Flight::route('GET /getClientOrders/@headerslink/@apiData', function ($headerslink,$apiData) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    
+    $decodedData = urldecode($apiData);
+    $postData = json_decode($decodedData, true);
     $parts = explode(" ", $headerslink);
 
     $apiKey=$parts[0];
@@ -490,7 +491,16 @@ Flight::route('GET /getClientOrders/@headerslink/@clientId/@filter/@param/@value
 
         if ($response1 != 'false' ) {
            
-             echo modelGet::getOrders($response1,$xApiKey,$clientId,$filter,$param,$value);
+              $postData['apk'] = $response1;
+            $postData['xapk'] = $xApiKey;
+            $postData['apiValues'] = [
+                "serviceName"=>"kairosCom",
+                "apiName"=>"apiClient",
+                "apiVersion"=>"v1",
+                "endPoint"=>"getClientOrders"
+            ];
+           
+                    echo modelGet::getModel($postData); 
            
         } else {
             $responseSQL="false";
@@ -682,12 +692,14 @@ $postData['apiValues'] = [
 
 
 
-Flight::route('GET /getClientPickupPoints/@headerslink/@clientId/@filter/@param/@value', function ($headerslink,$clientId,$filter,$param,$value) {
+Flight::route('GET /getClientPickupPoints/@headerslink/@apiData', function ($headerslink,$apiData) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    
+    $decodedData = urldecode($apiData);
+    $postData = json_decode($decodedData, true);
+
     $parts = explode(" ", $headerslink);
 
     $apiKey=$parts[0];
@@ -704,8 +716,16 @@ Flight::route('GET /getClientPickupPoints/@headerslink/@clientId/@filter/@param/
 
         if ($response1 != 'false' ) {
            
-             echo modelGet::getPickUpPoints($response1,$xApiKey,$clientId,$filter,$param,$value);
+            $postData['apk'] = $response1;
+            $postData['xapk'] = $xApiKey;
+            $postData['apiValues'] = [
+                "serviceName"=>"kairosCom",
+                "apiName"=>"apiClient",
+                "apiVersion"=>"v1",
+                "endPoint"=>"getClientPickupPoints"
+            ];
            
+                    echo modelGet::getModel($postData);           
         } else {
             $responseSQL="false";
             $apiMessageSQL="¡Autenticación fallida!";
