@@ -15,10 +15,7 @@ class modelGet{
                 $apiName=$apiData['apiValues']['apiName'];
                 $apiVersion=$apiData['apiValues']['apiVersion'];
                 $endPoint=$apiData['apiValues']['endPoint'];
-                $clientId=$apiData['apiData']['clientId'];
-                $filter=$apiData['apiData']['filter'];
-                $param=$apiData['apiData']['param'];
-                $value=$apiData['apiData']['value'];
+               
 
 
 
@@ -31,9 +28,11 @@ class modelGet{
                     )
                 );
                 $context = stream_context_create($options);
-                
+                unset($data['apiValues']);
+                unset($data['apk']);
+                unset($data['xapk']);
                 // Realizar la solicitud y obtener la respuesta
-                $response = file_get_contents($sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$clientId.'/'.$filter.'/'.$param.'/'.$value, false, $context);
+                $response = file_get_contents($sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$apiData, false, $context);
                      
                
             
