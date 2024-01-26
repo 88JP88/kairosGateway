@@ -8,7 +8,7 @@ class modelPost{
   
 public static function postModel($data){
   $sub_domaincon=new model_dom();
-  $sub_domain1=$sub_domaincon->domCom();
+  $sub_domain1=$sub_domaincon->dom();
   $APK=$data['apk'];
   $XAPK=$data['xapk'];
   $serviceName=$data['apiValues']['serviceName'];
