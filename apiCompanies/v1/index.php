@@ -1,11 +1,12 @@
 
 <?php
 
-require 'flight/Flight.php';
-
-require 'database/db_users.php';
+require 'flight/Flight.php'; 
 require 'env/domain.php';
-
+require_once 'model/users/postModel.php';
+require_once 'model/users/getModel.php';
+require_once 'model/modelSecurity/authModel.php';
+require_once 'model/users/responses.php';
  
 
 
@@ -111,6 +112,7 @@ echo $response2;
 
 Flight::route('POST /postClientRoom/@apk/@xapk', function ($apk,$xapk) {
   
+  
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -118,73 +120,41 @@ Flight::route('POST /postClientRoom/@apk/@xapk', function ($apk,$xapk) {
    
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'clientId' => Flight::request()->data->clientId,
-            'comments' => Flight::request()->data->comments
-
-        );
-
-
-
-        // Acceder a los encabezados
+       
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
+       //  Acceder a los encabezados
     
-        
+       if($response=="true"){
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCore",
+    "apiName"=>"apiCompanies",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postClientRoom"
+];
+        echo modelPost::postModel($postData);
+    
+       }
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
 
-        $sub_domaincon=new model_dom();
-        $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
-      
-        $data = array(
-          'ApiKey' =>$apk, 
-          'xapiKey' => $xapk
-          
-          );
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response1 = curl_exec($curl);
-
-      
-      $dt=json_encode($dta);
-
-      curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiCompanies/v1/postClientRoom/$apk/$xapk";
-
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $dt);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-      $headers = array(
-        'Content-Type: application/json'
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response2 = curl_exec($curl);
-      
-
- 
-    curl_close($curl);
-
-
-
-echo $response2;
+        }
 
         
     } else {
-        echo 'false|¡Error: Encabezados faltantes!';
+     
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
     }
 });
 
@@ -198,93 +168,41 @@ Flight::route('POST /postAssignRoom/@apk/@xapk', function ($apk,$xapk) {
    
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'clientId' => Flight::request()->data->clientId,
-            'roomId' => Flight::request()->data->roomId,
-            'userId' => Flight::request()->data->userId,
-            'timeId' => Flight::request()->data->timeId,
-            'param' => Flight::request()->data->param,
-            'assignments' => Flight::request()->data->assignments
-
-        );
-
-
-
-        // Acceder a los encabezados
+       
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
+       //  Acceder a los encabezados
     
-        
+       if($response=="true"){
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCore",
+    "apiName"=>"apiCompanies",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postAssignRoom"
+];
+        echo modelPost::postModel($postData);
+    
+       }
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
 
-        $sub_domaincon=new model_dom();
-        $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
-      
-        $data = array(
-          'ApiKey' =>$apk, 
-          'xapiKey' => $xapk
-          
-          );
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response1 = curl_exec($curl);
-
-      
-      $dt=json_encode($dta);
-
-      curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiCompanies/v1/postAssignRoom/$apk/$xapk";
-
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $dt);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-      $headers = array(
-        'Content-Type: application/json'
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response2 = curl_exec($curl);
-      
-
- 
-    curl_close($curl);
-
- //inicio de log
- require_once 'kronos/postLog.php';
- 
- $backtrace = debug_backtrace();
- $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
- $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
-$justFileName = basename($currentFile);
-$rutaCompleta = __DIR__;
-$status = http_response_code();
-$cid=Flight::request()->data->clientId;
-
-//$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
-$array = explode("|", $response2);
-$response12=$array[0];
-$message=$array[1];
-kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-//final de log
-
-echo $response2;
+        }
 
         
     } else {
-        echo 'false|¡Error: Encabezados faltantes!';
+     
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
     }
 });
 
@@ -299,95 +217,41 @@ Flight::route('POST /postClientElement/@apk/@xapk', function ($apk,$xapk) {
    
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'clientId' => Flight::request()->data->clientId,
-            'comments' => Flight::request()->data->comments,
-            'name' => Flight::request()->data->name,
-            'caract' => Flight::request()->data->caract,
-            'brand' => Flight::request()->data->brand,
-            'type' => Flight::request()->data->type,
-            'img' => Flight::request()->data->img,
-            'value' => Flight::request()->data->value
-
-        );
-
-
-
-        // Acceder a los encabezados
+       
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
+       //  Acceder a los encabezados
     
-        
+       if($response=="true"){
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCore",
+    "apiName"=>"apiCompanies",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postClientElement"
+];
+        echo modelPost::postModel($postData);
+    
+       }
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
 
-        $sub_domaincon=new model_dom();
-        $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
-      
-        $data = array(
-          'ApiKey' =>$apk, 
-          'xapiKey' => $xapk
-          
-          );
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response1 = curl_exec($curl);
-
-      
-      $dt=json_encode($dta);
-
-      curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiCompanies/v1/postClientElement/$apk/$xapk";
-
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $dt);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-      $headers = array(
-        'Content-Type: application/json'
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response2 = curl_exec($curl);
-      
-
- 
-    curl_close($curl);
-
- //inicio de log
- require_once 'kronos/postLog.php';
- 
- $backtrace = debug_backtrace();
- $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
- $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
-$justFileName = basename($currentFile);
-$rutaCompleta = __DIR__;
-$status = http_response_code();
-$cid=Flight::request()->data->clientId;
-
-//$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
-$array = explode("|", $response2);
-$response12=$array[0];
-$message=$array[1];
-kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-//final de log
-
-echo $response2;
+        }
 
         
     } else {
-        echo 'false|¡Error: Encabezados faltantes!';
+     
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
     }
 });
 
@@ -402,91 +266,41 @@ Flight::route('POST /putClientCalendar/@apk/@xapk', function ($apk,$xapk) {
    
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'calendarId' => Flight::request()->data->calendarId,
-            'filter' => Flight::request()->data->filter,
-            'reason' => Flight::request()->data->reason,
-            'value' => Flight::request()->data->value
-
-        );
-
-
-
-        // Acceder a los encabezados
+       
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
+       //  Acceder a los encabezados
     
-        
+       if($response=="true"){
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCore",
+    "apiName"=>"apiCompanies",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putClientCalendar"
+];
+        echo modelPost::postModel($postData);
+    
+       }
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
 
-        $sub_domaincon=new model_dom();
-        $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
-      
-        $data = array(
-          'ApiKey' =>$apk, 
-          'xapiKey' => $xapk
-          
-          );
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response1 = curl_exec($curl);
-
-      
-      $dt=json_encode($dta);
-
-      curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiCompanies/v1/putClientCalendar/$apk/$xapk";
-
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $dt);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-      $headers = array(
-        'Content-Type: application/json'
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response2 = curl_exec($curl);
-      
-
- 
-    curl_close($curl);
-
- //inicio de log
- require_once 'kronos/postLog.php';
- 
- $backtrace = debug_backtrace();
- $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
- $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
-$justFileName = basename($currentFile);
-$rutaCompleta = __DIR__;
-$status = http_response_code();
-$cid=Flight::request()->data->clientId;
-
-//$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
-$array = explode("|", $response2);
-$response12=$array[0];
-$message=$array[1];
-kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-//final de log
-
-echo $response2;
+        }
 
         
     } else {
-        echo 'false|¡Error: Encabezados faltantes!';
+     
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
     }
 });
 
@@ -501,90 +315,41 @@ Flight::route('POST /putClientRoom/@apk/@xapk', function ($apk,$xapk) {
    
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'roomId' => Flight::request()->data->roomId,
-            'filter' => Flight::request()->data->filter,
-            'reason' => Flight::request()->data->reason,
-            'value' => Flight::request()->data->value
-
-        );
-
-
-
-        // Acceder a los encabezados
+       
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
+       //  Acceder a los encabezados
     
-        
-
-        $sub_domaincon=new model_dom();
-        $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
-      
-        $data = array(
-          'ApiKey' =>$apk, 
-          'xapiKey' => $xapk
-          
-          );
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response1 = curl_exec($curl);
-
-      
-      $dt=json_encode($dta);
-
-      curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiCompanies/v1/putClientRoom/$apk/$xapk";
-
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $dt);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-      $headers = array(
-        'Content-Type: application/json'
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response2 = curl_exec($curl);
-      
-
- 
-    curl_close($curl);
-
-     //inicio de log
-     require_once 'kronos/postLog.php';
- 
-     $backtrace = debug_backtrace();
-     $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
-     $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
-    $justFileName = basename($currentFile);
-    $rutaCompleta = __DIR__;
-    $status = http_response_code();
-    $cid=Flight::request()->data->clientId;
+       if($response=="true"){
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCore",
+    "apiName"=>"apiCompanies",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putClientRoom"
+];
+        echo modelPost::postModel($postData);
     
-    //$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
-    $array = explode("|", $response2);
-    $response12=$array[0];
-    $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-    //final de log
-echo $response2;
+       }
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
+        }
 
         
     } else {
-        echo 'false|¡Error: Encabezados faltantes!';
+     
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
     }
 });
 
@@ -601,91 +366,41 @@ Flight::route('POST /putClientElement/@apk/@xapk', function ($apk,$xapk) {
    
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'elementId' => Flight::request()->data->elementId,
-            'filter' => Flight::request()->data->filter,
-            'reason' => Flight::request()->data->reason,
-            'value' => Flight::request()->data->value
-
-        );
-
-
-
-        // Acceder a los encabezados
+       
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
+       //  Acceder a los encabezados
     
-        
+       if($response=="true"){
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCore",
+    "apiName"=>"apiCompanies",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putClientElement"
+];
+        echo modelPost::postModel($postData);
+    
+       }
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
 
-        $sub_domaincon=new model_dom();
-        $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
-      
-        $data = array(
-          'ApiKey' =>$apk, 
-          'xapiKey' => $xapk
-          
-          );
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response1 = curl_exec($curl);
-
-      
-      $dt=json_encode($dta);
-
-      curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiCompanies/v1/putClientElement/$apk/$xapk";
-
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $dt);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-      $headers = array(
-        'Content-Type: application/json'
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response2 = curl_exec($curl);
-      
-
- 
-    curl_close($curl);
-
- //inicio de log
- require_once 'kronos/postLog.php';
- 
- $backtrace = debug_backtrace();
- $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
- $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
-$justFileName = basename($currentFile);
-$rutaCompleta = __DIR__;
-$status = http_response_code();
-$cid=Flight::request()->data->clientId;
-
-//$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
-$array = explode("|", $response2);
-$response12=$array[0];
-$message=$array[1];
-kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-//final de log
-
-echo $response2;
+        }
 
         
     } else {
-        echo 'false|¡Error: Encabezados faltantes!';
+     
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
     }
 });
 
@@ -1240,88 +955,41 @@ Flight::route('POST /putExtClient/@apk/@xapk', function ($apk,$xapk) {
    
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'clientId' => Flight::request()->data->clientId
-            
-        );
-
-
-
-        // Acceder a los encabezados
+       
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
+       //  Acceder a los encabezados
     
-        
+       if($response=="true"){
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCore",
+    "apiName"=>"apiCore",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putExtClient"
+];
+        echo modelPost::postModel($postData);
+    
+       }
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
 
-        $sub_domaincon=new model_dom();
-        $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
-      
-        $data = array(
-          'ApiKey' =>$apk, 
-          'xapiKey' => $xapk
-          
-          );
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response1 = curl_exec($curl);
-
-      
-      $dt=json_encode($dta);
-
-      curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiCore/v1/putExtClient/$apk/$xapk";
-
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $dt);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-      $headers = array(
-        'Content-Type: application/json'
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response2 = curl_exec($curl);
-      
-
- 
-    curl_close($curl);
-
- //inicio de log
- require_once 'kronos/postLog.php';
- 
- $backtrace = debug_backtrace();
- $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
- $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
-$justFileName = basename($currentFile);
-$rutaCompleta = __DIR__;
-$status = http_response_code();
-$cid=Flight::request()->data->clientId;
-
-//$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
-$array = explode("|", $response2);
-$response12=$array[0];
-$message=$array[1];
-kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-//final de log
-
-echo $response2;
+        }
 
         
     } else {
-        echo 'false|¡Error: Encabezados faltantes!';
+     
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
     }
 });
 
@@ -1340,90 +1008,41 @@ Flight::route('POST /putIntUser/@apk/@xapk', function ($apk,$xapk) {
    
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'userId' => Flight::request()->data->userId,
-            'filter' => Flight::request()->data->filter,
-            'value' => Flight::request()->data->value
-
-        );
-
-
-
-        // Acceder a los encabezados
+       
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
+       //  Acceder a los encabezados
     
-        
+       if($response=="true"){
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCore",
+    "apiName"=>"apiCore",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putIntUser"
+];
+        echo modelPost::postModel($postData);
+    
+       }
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
 
-        $sub_domaincon=new model_dom();
-        $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
-      
-        $data = array(
-          'ApiKey' =>$apk, 
-          'xapiKey' => $xapk
-          
-          );
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response1 = curl_exec($curl);
-
-      
-      $dt=json_encode($dta);
-
-      curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiCore/v1/putIntUser/$apk/$xapk";
-
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $dt);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-      $headers = array(
-        'Content-Type: application/json'
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response2 = curl_exec($curl);
-      
-
- 
-    curl_close($curl);
-
- //inicio de log
- require_once 'kronos/postLog.php';
- 
- $backtrace = debug_backtrace();
- $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
- $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
-$justFileName = basename($currentFile);
-$rutaCompleta = __DIR__;
-$status = http_response_code();
-$cid=Flight::request()->data->clientId;
-
-//$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
-$array = explode("|", $response2);
-$response12=$array[0];
-$message=$array[1];
-kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-//final de log
-
-echo $response2;
+        }
 
         
     } else {
-        echo 'false|¡Error: Encabezados faltantes!';
+     
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
     }
 });
 
@@ -1440,90 +1059,41 @@ Flight::route('POST /putGenUser/@apk/@xapk', function ($apk,$xapk) {
    
     // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
     if (!empty($apk) && !empty($xapk)) {
-        $dta = array(
-            
-            'userId' => Flight::request()->data->userId,
-            'filter' => Flight::request()->data->filter,
-            'value' => Flight::request()->data->value
-
-        );
-
-
-
-        // Acceder a los encabezados
+       
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
+       //  Acceder a los encabezados
     
-        
+       if($response=="true"){
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosCore",
+    "apiName"=>"apiCore",
+    "apiVersion"=>"v1",
+    "endPoint"=>"putGenUser"
+];
+        echo modelPost::postModel($postData);
+    
+       }
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
 
-        $sub_domaincon=new model_dom();
-        $sub_domain=$sub_domaincon->dom();
-        $url = $sub_domain.'/kairosCore/apiAuth/v1/authApiKeyGateway/';
-      
-        $data = array(
-          'ApiKey' =>$apk, 
-          'xapiKey' => $xapk
-          
-          );
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-      // curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response1 = curl_exec($curl);
-
-      
-      $dt=json_encode($dta);
-
-      curl_close($curl);
-      $url = $sub_domain."/kairosCore/apiCore/v1/putGenUser/$apk/$xapk";
-
-      $curl = curl_init();
-      
-      // Configurar las opciones de la sesión cURL
-      curl_setopt($curl, CURLOPT_URL, $url);
-      curl_setopt($curl, CURLOPT_POST, true);
-      curl_setopt($curl, CURLOPT_POSTFIELDS, $dt);
-      curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-
-      $headers = array(
-        'Content-Type: application/json'
-    );
-    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-      
-      // Ejecutar la solicitud y obtener la respuesta
-      $response2 = curl_exec($curl);
-      
-
- 
-    curl_close($curl);
-
- //inicio de log
- require_once 'kronos/postLog.php';
- 
- $backtrace = debug_backtrace();
- $info['Función'] = $backtrace[1]['function']; // 1 para obtener la función actual, 2 para la anterior, etc.
- $currentFile = __FILE__; // Obtiene la ruta completa y el nombre del archivo actual
-$justFileName = basename($currentFile);
-$rutaCompleta = __DIR__;
-$status = http_response_code();
-$cid=Flight::request()->data->clientId;
-
-//$response1 = trim($response1); // Eliminar espacios en blanco alrededor de la respuesta
-$array = explode("|", $response2);
-$response12=$array[0];
-$message=$array[1];
-kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
-//final de log
-
-echo $response2;
+        }
 
         
     } else {
-        echo 'false|¡Error: Encabezados faltantes!';
+     
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
     }
 });
 
