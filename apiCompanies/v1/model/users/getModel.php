@@ -10,7 +10,7 @@ class modelGet{
    
   
     $sub_domaincons = new model_dom();
-            $sub_domain = $sub_domaincons->domCom();
+            $sub_domain = $sub_domaincons->dom();
             
             $response1=$apiData['apk'];
             $xApiKey=$apiData['xapk'];
