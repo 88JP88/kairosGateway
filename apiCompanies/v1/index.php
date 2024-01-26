@@ -525,7 +525,7 @@ Flight::route('GET /getCalendarTimedes/@headerslink/@apiData', function ($header
 
 
 
-Flight::route('GET /getClientRooms/@headerslink/@filter/@timeid', function ($headerslink,$filter,$timeid) {
+Flight::route('GET /getClientRooms/@headerslink/@apiData', function ($headerslink,$apiData) {
     
    
 
