@@ -99,7 +99,7 @@ Flight::route('POST /postUsersIntegration/@apk/@xapk', function ($apk,$xapk) {
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+   // kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 
@@ -199,7 +199,7 @@ Flight::route('POST /postInternalUsersIntegration/@apk/@xapk', function ($apk,$x
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+   // kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 
@@ -303,7 +303,7 @@ Flight::route('POST /postUsersIntegrationAdmin/@apk/@xapk', function ($apk,$xapk
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+   // kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 
@@ -902,7 +902,7 @@ Flight::route('POST /postClient/@apk/@xapk', function ($apk,$xapk) {
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+  //  kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 
@@ -1003,7 +1003,7 @@ header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+   // kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 
@@ -1104,7 +1104,7 @@ Flight::route('POST /putIntUser/@apk/@xapk', function ($apk,$xapk) {
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+   // kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 
@@ -1203,7 +1203,7 @@ Flight::route('POST /putGenUser/@apk/@xapk', function ($apk,$xapk) {
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+   // kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 
@@ -1491,7 +1491,7 @@ Flight::route('POST /validateLogInClose/@headerslink', function ($headerslink) {
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+  //  kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 //echo json_encode($dta);
@@ -1594,7 +1594,7 @@ Flight::route('POST /validateLogOutInternal/@headerslink', function ($headerslin
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+   // kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 //echo json_encode($dta);
@@ -1699,7 +1699,7 @@ Flight::route('POST /validateLogOutClient/@headerslink', function ($headerslink)
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+   // kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 //echo json_encode($dta);
@@ -2172,7 +2172,7 @@ Flight::route('POST /putMyProfile/@apk/@xapk', function ($apk,$xapk) {
     $array = explode("|", $response2);
     $response12=$array[0];
     $message=$array[1];
-    kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
+   // kronos($response12,$message,$message, $info['Función'],$justFileName,$rutaCompleta,$cid,$dt,$url,$status);
     //final de log
 echo $response2;
 
