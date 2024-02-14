@@ -512,7 +512,8 @@ Flight::route('GET /getGeneralUsers/@headerslink/@apiData', function ($headersli
                 "endPoint"=>"getGeneralUsers"
             ];
            
-                    echo modelGet::getModel($postData);           
+                    //echo modelGet::getModel($postData);      
+                    echo $apiData;     
         } else {
             $responseSQL="false";
             $apiMessageSQL="¡Autenticación fallida!";
