@@ -43,7 +43,7 @@ class modelGet{
         
              // return $appDataJson;
   //return $response;
-  return json_encode($apiData);
+  return json_encode($apiData,$serviceName);
   
   }
 
