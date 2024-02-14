@@ -1,6 +1,6 @@
 <?php
 
-function kronos($response,$message,$error,$function,$filename,$module,$clientId,$data,$endpoint,$statusCode) {
+function kronos($response,$message,$error,$function,$filename,$module,$clientId,$data,$endpoint,$statusCode,$trackId,$referer) {
 
   // Establecer la zona horaria a Bogotá
 date_default_timezone_set('America/Bogota');
@@ -24,6 +24,7 @@ $jsonData = '{
     "log":{
       "front":{
         "timestamp": "'.$currentDateTime.'",
+        "trackId":"'.$trackId.'",
         "level": "'.$level.'",
         "clientId": "'.$clientId.'",
         "module": "'.$module.'",
@@ -43,7 +44,8 @@ $jsonData = '{
       }
     },"data":'.$data.',
      "status":{
-      "code":"'.$statusCode.'"
+      "code":"'.$statusCode.'",
+      "referer":"'.$referer.'"
     }
   }';
 
@@ -56,7 +58,7 @@ $jsonData = '{
   // Definir los datos a enviar en la solicitud POST
   $data6 = array(
       'data' => $jsonData,
-      'logType' => 'gatewayApiCore'
+      'logType' => 'gatewayApiClient'
      
       
   );
