@@ -43,7 +43,7 @@ class modelGet{
         
              // return $appDataJson;
   //return $response;
-  return "HERE";
+  return $apiData;
   
   }
 
