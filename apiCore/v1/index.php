@@ -507,7 +507,7 @@ Flight::route('GET /getGeneralUsers/@headerslink/@fapiData', function ($headersl
             $postData['xapk'] = $xApiKey;
             $postData['apiValues'] = [
                 "serviceName"=>"kairosCore",
-                "apiName"=>"apiCompanies",
+                "apiName"=>"apiCore",
                 "apiVersion"=>"v1",
                 "endPoint"=>"getGeneralUsers"
             ];
