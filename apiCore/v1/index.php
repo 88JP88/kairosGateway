@@ -479,7 +479,7 @@ Flight::route('GET /getInternalUsers/@headerslink/@apiData', function ($headersl
 
 
 
-Flight::route('GET /getGeneralUsers/@headerslink/@fapiData', function ($headerslink,$apiData) {
+Flight::route('GET /getGeneralUsers/@headerslink/@apiData', function ($headerslink,$apiData) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
