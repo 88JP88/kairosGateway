@@ -43,7 +43,8 @@ class modelGet{
         
              // return $appDataJson;
   //return $response;
-  return json_encode($serviceName);
+  
+  return "ruta: ".$sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$appDataJson." Api-Key: ".$response1." x-api-Key: ".$xApiKey;
   
   }
 
