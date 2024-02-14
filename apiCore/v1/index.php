@@ -422,7 +422,6 @@ Flight::route('GET /getInternalUsers/@headerslink/@apiData', function ($headersl
     
  
 
-
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -449,12 +448,13 @@ Flight::route('GET /getInternalUsers/@headerslink/@apiData', function ($headersl
             $postData['xapk'] = $xApiKey;
             $postData['apiValues'] = [
                 "serviceName"=>"kairosCore",
-                "apiName"=>"apiCompanies",
+                "apiName"=>"apiCore",
                 "apiVersion"=>"v1",
                 "endPoint"=>"getInternalUsers"
             ];
            
-                    echo modelGet::getModel($postData);           
+                    echo modelGet::getModel($postData);      
+                    //echo $apiData;     
         } else {
             $responseSQL="false";
             $apiMessageSQL="¡Autenticación fallida!";
