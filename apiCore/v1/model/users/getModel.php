@@ -37,14 +37,14 @@ class modelGet{
             $appDataJson=json_encode($apiData);
            
             // Realizar la solicitud y obtener la respuesta
-           // $response = file_get_contents($sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$appDataJson, false, $context);
+           $response = file_get_contents($sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$appDataJson, false, $context);
                  
            
         
              // return $appDataJson;
-  //return $response;
+  return $response;
   
-  return "ruta: ".$sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$appDataJson." Api-Key: ".$response1." x-api-Key: ".$xApiKey;
+  //return "ruta: ".$sub_domain.'/'.$serviceName.'/'.$apiName.'/'.$apiVersion.'/'.$endPoint.'/'.$appDataJson." Api-Key: ".$response1." x-api-Key: ".$xApiKey;
   
   }
 
