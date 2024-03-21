@@ -41,12 +41,12 @@ function domCom() {
 
     }
     if($option==2){//desarrollo
- $sub_domain="https://dev-kairosCom.lugma.tech"; // o dirección IP del servidor de la base de datos remota
+ $sub_domain="https://dev-kairosOS.lugma.tech"; // o dirección IP del servidor de la base de datos remota
  return $sub_domain;
 
     }
     if($option==3){//pruebas-staging
-        $sub_domain="https://staging-kairoscom.lugma.tech";
+        $sub_domain="https://staging-kairosOS.lugma.tech";
         return $sub_domain;
     }
     if($option==4){//ptoducción
