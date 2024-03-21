@@ -40,7 +40,7 @@ curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
 
 curl_close($curl);
 
-echo  $response2;
+echo  $url;
 
 }
 
