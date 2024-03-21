@@ -291,7 +291,7 @@ Flight::route('GET /getCategories/@headerslink/@apiData', function ($headerslink
 });
 
 
-Flight::route('POST /putProduct/@apk/@xapk', function ($apk,$xapk) {
+Flight::route('POST /putPlace/@apk/@xapk', function ($apk,$xapk) {
   
    
 
@@ -311,10 +311,10 @@ Flight::route('POST /putProduct/@apk/@xapk', function ($apk,$xapk) {
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
 $postData['apiValues'] = [
-    "serviceName"=>"kairosCom",
-    "apiName"=>"apiCom",
+    "serviceName"=>"kairosOS",
+    "apiName"=>"apiOS",
     "apiVersion"=>"v1",
-    "endPoint"=>"putProduct"
+    "endPoint"=>"putPlace"
 ];
         echo modelPost::postModel($postData);
     
