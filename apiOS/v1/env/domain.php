@@ -41,7 +41,7 @@ function domCom() {
 
     }
     if($option==2){//desarrollo
- $sub_domain="https://dev-kairosOS.lugma.tech"; // o dirección IP del servidor de la base de datos remota
+ $sub_domain="https://dev-kairosos.lugma.tech"; // o dirección IP del servidor de la base de datos remota
  return $sub_domain;
 
     }
