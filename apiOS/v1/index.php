@@ -57,152 +57,9 @@ $postData['apiValues'] = [
 });
 
 
-Flight::route('POST /postCatalog/@apk/@xapk', function ($apk,$xapk) {
-  
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    
-   
-    // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
-    if (!empty($apk) && !empty($xapk)) {
-       
-        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
-       //  Acceder a los encabezados
-    
-       if($response=="true"){
-        $postData = Flight::request()->data->getData();
-        $postData['apk'] = $apk;
-$postData['xapk'] = $xapk;
-$postData['apiValues'] = [
-    "serviceName"=>"kairosCom",
-    "apiName"=>"apiCom",
-    "apiVersion"=>"v1",
-    "endPoint"=>"postCatalog"
-];
-        echo modelPost::postModel($postData);
-    
-       }
-        else{
-            $responseSQL="false";
-            $apiMessageSQL="¡Autenticación fallida!";
-            $apiStatusSQL="401";
-            $messageSQL="¡Autenticación fallida!";
-            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
-
-        }
-
-        
-    } else {
-     
-        $responseSQL="false";
-    $apiMessageSQL="¡Autenticación fallida!";
-    $apiStatusSQL="403";
-    $messageSQL="¡Encabezados faltantes!";
-    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
-
-    }
-});
 
 
-
-Flight::route('POST /postStore/@apk/@xapk', function ($apk,$xapk) {
-  
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    
-   
-    // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
-    if (!empty($apk) && !empty($xapk)) {
-       
-        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
-       //  Acceder a los encabezados
-    
-       if($response=="true"){
-        $postData = Flight::request()->data->getData();
-        $postData['apk'] = $apk;
-$postData['xapk'] = $xapk;
-$postData['apiValues'] = [
-    "serviceName"=>"kairosCom",
-    "apiName"=>"apiCom",
-    "apiVersion"=>"v1",
-    "endPoint"=>"postStore"
-];
-        echo modelPost::postModel($postData);
-    
-       }
-        else{
-            $responseSQL="false";
-            $apiMessageSQL="¡Autenticación fallida!";
-            $apiStatusSQL="401";
-            $messageSQL="¡Autenticación fallida!";
-            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
-
-        }
-
-        
-    } else {
-     
-        $responseSQL="false";
-    $apiMessageSQL="¡Autenticación fallida!";
-    $apiStatusSQL="403";
-    $messageSQL="¡Encabezados faltantes!";
-    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
-
-    }
-});
-
-
-Flight::route('POST /postCategorie/@apk/@xapk', function ($apk,$xapk) {
-  
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
-    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-    
-   
-    // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
-    if (!empty($apk) && !empty($xapk)) {
-       
-        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
-       //  Acceder a los encabezados
-    
-       if($response=="true"){
-        $postData = Flight::request()->data->getData();
-        $postData['apk'] = $apk;
-$postData['xapk'] = $xapk;
-$postData['apiValues'] = [
-    "serviceName"=>"kairosCom",
-    "apiName"=>"apiCom",
-    "apiVersion"=>"v1",
-    "endPoint"=>"postCategorie"
-];
-        echo modelPost::postModel($postData);
-    
-       }
-        else{
-            $responseSQL="false";
-            $apiMessageSQL="¡Autenticación fallida!";
-            $apiStatusSQL="401";
-            $messageSQL="¡Autenticación fallida!";
-            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
-
-        }
-
-        
-    } else {
-     
-        $responseSQL="false";
-    $apiMessageSQL="¡Autenticación fallida!";
-    $apiStatusSQL="403";
-    $messageSQL="¡Encabezados faltantes!";
-    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
-
-    }
-});
-
-
-Flight::route('GET /getProducts/@headerslink/@apiData', function ($headerslink,$apiData) {
+Flight::route('GET /getPlaces/@headerslink/@apiData', function ($headerslink,$apiData) {
     
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -229,10 +86,10 @@ Flight::route('GET /getProducts/@headerslink/@apiData', function ($headerslink,$
             $postData['apk'] = $response1;
             $postData['xapk'] = $xApiKey;
             $postData['apiValues'] = [
-                "serviceName"=>"kairosCom",
-                "apiName"=>"apiCom",
+                "serviceName"=>"kairosOS",
+                "apiName"=>"apiOS",
                 "apiVersion"=>"v1",
-                "endPoint"=>"getProducts"
+                "endPoint"=>"getPlaces"
             ];
            
                     echo modelGet::getModel($postData);           
