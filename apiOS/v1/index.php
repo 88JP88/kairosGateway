@@ -502,7 +502,7 @@ $postData['apiValues'] = [
     "serviceName"=>"kairosOS",
     "apiName"=>"apiOS",
     "apiVersion"=>"v1",
-    "endPoint"=>"postElement"
+    "endPoint"=>"postProduct"
 ];
         echo modelPost::postModel($postData);
     
