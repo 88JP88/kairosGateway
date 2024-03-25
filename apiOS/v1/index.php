@@ -153,6 +153,53 @@ $postData['apiValues'] = [
     }
 });
 
+
+Flight::route('POST /postCategory/@apk/@xapk', function ($apk,$xapk) {
+  
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+    
+   
+    // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
+    if (!empty($apk) && !empty($xapk)) {
+       
+        $response=  authModel::modelAuth($apk,$xapk);//AUTH MODEL
+       //  Acceder a los encabezados
+    
+       if($response=="true"){
+        $postData = Flight::request()->data->getData();
+        $postData['apk'] = $apk;
+$postData['xapk'] = $xapk;
+$postData['apiValues'] = [
+    "serviceName"=>"kairosOS",
+    "apiName"=>"apiOS",
+    "apiVersion"=>"v1",
+    "endPoint"=>"postCategory"
+];
+        echo modelPost::postModel($postData);
+    
+       }
+        else{
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
+        }
+
+        
+    } else {
+     
+        $responseSQL="false";
+    $apiMessageSQL="¡Autenticación fallida!";
+    $apiStatusSQL="403";
+    $messageSQL="¡Encabezados faltantes!";
+    echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
+    }
+});
 Flight::route('GET /getPlaces/@headerslink/@apiData', function ($headerslink,$apiData) {
     
     header("Access-Control-Allow-Origin: *");
@@ -210,6 +257,66 @@ Flight::route('GET /getPlaces/@headerslink/@apiData', function ($headerslink,$ap
 
 
 });
+
+
+Flight::route('GET /getCategories/@headerslink/@apiData', function ($headerslink,$apiData) {
+    
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+    
+    $decodedData = urldecode($apiData);
+    $postData = json_decode($decodedData, true);
+    $parts = explode(" ", $headerslink);
+
+    $apiKey=$parts[0];
+    $xApiKey=$parts[1];
+    // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
+    if (!empty($apiKey) && !empty($xApiKey)) {
+        // Leer los datos de la solicitud
+       
+       $response1=authModel::modelAuthKairos($apiKey,$xApiKey);
+       
+
+        // Realizar acciones basadas en los valores de los encabezados
+
+
+        if ($response1 != 'false' ) {
+           
+            $postData['apk'] = $response1;
+            $postData['xapk'] = $xApiKey;
+            $postData['apiValues'] = [
+                "serviceName"=>"kairosOS",
+                "apiName"=>"apiOS",
+                "apiVersion"=>"v1",
+                "endPoint"=>"getCategories"
+            ];
+           
+                    echo modelGet::getModel($postData);           
+        } else {
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
+        }
+    } else {
+        $responseSQL="false";
+        $apiMessageSQL="¡Autenticación fallida!";
+        $apiStatusSQL="403";
+        $messageSQL="¡Encabezados faltantes!";
+        echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+    
+    }
+
+
+
+
+
+
+});
+
 
 
 Flight::route('GET /getSites/@headerslink/@apiData', function ($headerslink,$apiData) {
