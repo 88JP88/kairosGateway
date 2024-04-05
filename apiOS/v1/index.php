@@ -475,8 +475,8 @@ Flight::route('GET /getProducts/@headerslink/@apiData', function ($headerslink,$
                 "endPoint"=>"getProducts"
             ];
            
-                  //  echo modelGet::getModel($postData);    
-                    echo "ello";       
+                   echo modelGet::getModel($postData);    
+                     
         } else {
             $responseSQL="false";
             $apiMessageSQL="¡Autenticación fallida!";
