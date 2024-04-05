@@ -42,7 +42,7 @@ class modelGet{
            
         
              // return $appDataJson;
-  return "hello";
+  return $response;
   
   }
 
