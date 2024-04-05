@@ -42,7 +42,7 @@ class modelGet{
            
         
              // return $appDataJson;
-  return $response;
+  return $response1 $xApiKey;
   
   }
 
