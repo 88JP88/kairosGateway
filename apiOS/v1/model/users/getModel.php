@@ -42,8 +42,8 @@ class modelGet{
            
         
              // return $appDataJson;
-  return $response;
-  
+  //return $response;
+  return "hello";
   }
 
 }
