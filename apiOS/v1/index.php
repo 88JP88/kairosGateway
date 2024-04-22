@@ -250,6 +250,8 @@ $postData['apiValues'] = [
 
     }
 });
+
+
 Flight::route('GET /getPlaces/@headerslink/@apiData', function ($headerslink,$apiData) {
     
     header("Access-Control-Allow-Origin: *");
@@ -307,6 +309,67 @@ Flight::route('GET /getPlaces/@headerslink/@apiData', function ($headerslink,$ap
 
 
 });
+
+
+
+Flight::route('GET /getCustomers/@headerslink/@apiData', function ($headerslink,$apiData) {
+    
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+    header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+    
+    $decodedData = urldecode($apiData);
+    $postData = json_decode($decodedData, true);
+    $parts = explode(" ", $headerslink);
+
+    $apiKey=$parts[0];
+    $xApiKey=$parts[1];
+    // Verificar si los encabezados 'Api-Key' y 'Secret-Key' existen
+    if (!empty($apiKey) && !empty($xApiKey)) {
+        // Leer los datos de la solicitud
+       
+       $response1=authModel::modelAuthKairos($apiKey,$xApiKey);
+       
+
+        // Realizar acciones basadas en los valores de los encabezados
+
+
+        if ($response1 != 'false' ) {
+           
+            $postData['apk'] = $response1;
+            $postData['xapk'] = $xApiKey;
+            $postData['apiValues'] = [
+                "serviceName"=>"kairosOS",
+                "apiName"=>"apiOS",
+                "apiVersion"=>"v1",
+                "endPoint"=>"getCustomers"
+            ];
+           
+                    echo modelGet::getModel($postData);           
+        } else {
+            $responseSQL="false";
+            $apiMessageSQL="¡Autenticación fallida!";
+            $apiStatusSQL="401";
+            $messageSQL="¡Autenticación fallida!";
+            echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+
+        }
+    } else {
+        $responseSQL="false";
+        $apiMessageSQL="¡Autenticación fallida!";
+        $apiStatusSQL="403";
+        $messageSQL="¡Encabezados faltantes!";
+        echo modelResponse::responsePost($responseSQL,$apiMessageSQL,$apiStatusSQL,$messageSQL);//RESPONSE FUNCTION
+    
+    }
+
+
+
+
+
+
+});
+
 
 
 Flight::route('GET /getCategories/@headerslink/@apiData', function ($headerslink,$apiData) {
