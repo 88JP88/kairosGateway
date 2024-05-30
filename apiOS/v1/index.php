@@ -23,7 +23,14 @@ Flight::route('POST /postPlace/@apk/@xapk', function ($apk,$xapk) {
        //  Acceder a los encabezados
     
        if($response=="true"){
-        $postData = Flight::request()->data->getData();
+        $base64Data = Flight::request()->query->data;
+
+            // Decodificar Base64
+            $jsonString = base64_decode($base64Data);
+
+            // Convertir la cadena JSON en un array asociativo PHP
+            $postData = json_decode($jsonString, true);
+               // $postData = Flight::request()->data->getData();
         $postData['apk'] = $apk;
 $postData['xapk'] = $xapk;
 $postData['apiValues'] = [
