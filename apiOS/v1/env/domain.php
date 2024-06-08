@@ -12,7 +12,7 @@ function dom() {
 
     }
     if($option==2){//desarrollo
- $sub_domain="https://dev-kairoscore.lugma.tech"; // o dirección IP del servidor de la base de datos remota
+ $sub_domain="https://dev-kairoscore.lugma.services"; // o dirección IP del servidor de la base de datos remota
  return $sub_domain;
 
     }
